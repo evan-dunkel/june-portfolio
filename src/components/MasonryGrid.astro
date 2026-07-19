@@ -88,6 +88,11 @@ let gridIndex = 0;
                             const lb = item.lb;
                             const i = gridIndex++;
                             const isFirst = i === 0;
+                            const slug =
+                                work.src
+                                    .split("/")
+                                    .pop()
+                                    ?.replace(/\.[^.]+$/, "") ?? "";
 
                             return (
                                 <a
@@ -98,6 +103,7 @@ let gridIndex = 0;
                                     data-pswp-height={lb?.attributes.height}
                                     data-caption={work.caption || ""}
                                     data-alt={work.alt}
+                                    data-gallery-id={slug}
                                 >
                                     <Image
                                         src={img}

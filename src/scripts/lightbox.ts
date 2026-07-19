@@ -9,6 +9,27 @@ function init() {
 
   const email = gallery.dataset.email || '';
 
+  // Build slug → index map from gallery items
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+  const slugs: string[] = [];
+  items.forEach((el) => {
+    slugs.push(el.dataset.galleryId || '');
+  });
+
+  const HASH_PREFIX = 'image/';
+
+  function hashFromSlug(slug: string): string {
+    return `#${HASH_PREFIX}${slug}`;
+  }
+
+  function slideIndexFromHash(): number | null {
+    const hash = window.location.hash;
+    if (!hash.startsWith(`#${HASH_PREFIX}`)) return null;
+    const targetSlug = hash.slice(HASH_PREFIX.length + 1);
+    const idx = slugs.indexOf(targetSlug);
+    return idx >= 0 ? idx : null;
+  }
+
   const lightbox = new PhotoSwipeLightbox({
     gallery: '#portfolio-gallery',
     children: '.gallery-item',
@@ -30,6 +51,33 @@ function init() {
       const el = slide.data.element;
       return el?.dataset.caption || '';
     },
+  });
+
+  // ── Deep-link: update URL hash when slide changes ──────────────────
+  lightbox.on('change', () => {
+    if (!lightbox.pswp) return;
+    const index = lightbox.pswp.currIndex;
+    const slug = slugs[index];
+    if (slug) {
+      history.replaceState(null, '', hashFromSlug(slug));
+    }
+  });
+
+  // ── Deep-link: remove hash when lightbox closes ────────────────────
+  lightbox.on('close', () => {
+    if (window.location.hash.startsWith(`#${HASH_PREFIX}`)) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  });
+
+  // ── Deep-link: handle browser back/forward ─────────────────────────
+  window.addEventListener('popstate', () => {
+    const idx = slideIndexFromHash();
+    if (idx !== null && lightbox.pswp) {
+      lightbox.pswp.goTo(idx);
+    } else if (idx === null && lightbox.pswp) {
+      lightbox.pswp.close();
+    }
   });
 
   // ── Email in caption area ─────────────────────────────────────────
@@ -139,7 +187,13 @@ function init() {
     captionElement.appendChild(row);
   });
 
-  lightbox.init();
+  // ── Deep-link: open directly to a hashed image on page load ────────
+  const startIndex = slideIndexFromHash();
+  if (startIndex !== null) {
+    lightbox.loadAndOpen(startIndex);
+  } else {
+    lightbox.init();
+  }
 }
 
 init();
