@@ -6,3 +6,123 @@
   --color-muted: #737373;
   --spacing-gutter: 1.5rem;
 }
+
+/* ── Justified gallery grid (pure CSS flexbox, no JS required) ────── */
+
+.justified-gallery {
+  --min-row-height: clamp(200px, 20vw, 400px);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gutter);
+}
+
+/* Absorb leftover space on the last row so items don't stretch */
+.justified-gallery::after {
+  content: "";
+  flex-grow: 999999999;
+}
+
+/* Each item sizes itself proportionally to its aspect ratio */
+.gallery-item {
+  flex-grow: calc(var(--width, 1) * (100000 / var(--height, 1)));
+  flex-basis: calc(var(--min-row-height) * (var(--width, 1) / var(--height, 1)));
+  aspect-ratio: var(--width, 1) / var(--height, 1);
+  overflow: hidden;
+}
+
+/* ── PhotoSwipe overrides (scoped, minimal) ──────────────────────── */
+
+/* ── Caption layout: description + email in a flex row ──────────── */
+
+.pswp-caption-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.pswp-caption-text {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+/* Email pinned to top-right of the caption row */
+.pswp-caption-email {
+  flex-shrink: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1.5;
+  transition: color 0.15s;
+}
+
+.pswp-caption-email:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pswp-caption-email:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+.pswp-caption-email:active {
+  transform: scale(0.97);
+}
+
+/* Icon container */
+.pswp-caption-email-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.pswp-caption-email-icon svg {
+  position: absolute;
+}
+
+/* Copy icon */
+.pswp-copy-icon {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Check icon */
+.pswp-check-icon {
+  opacity: 0;
+  transform: scale(0) rotate(-90deg);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Copied state */
+.pswp-caption-email[data-copied] .pswp-copy-icon {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.pswp-caption-email[data-copied] .pswp-check-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pswp-caption-email:active {
+    transform: none;
+  }
+  .pswp-copy-icon,
+  .pswp-check-icon {
+    transition-duration: 0s;
+  }
+}

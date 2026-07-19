@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400">
+  <rect width="1000" height="1400" fill="#f7fafc"/>
+  <path d="M200,50 Q300,200 200,400 T200,700 T200,1000 T200,1350" stroke="#276749" stroke-width="4" fill="none" opacity="0.6"/>
+  <path d="M220,50 Q320,200 220,400 T220,700 T220,1000 T220,1350" stroke="#2f855a" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M240,50 Q340,200 240,400 T240,700 T240,1000 T240,1350" stroke="#38a169" stroke-width="2" fill="none" opacity="0.4"/>
+  <ellipse cx="210" cy="400" rx="100" ry="60" fill="#48bb78" opacity="0.2"/>
+  <ellipse cx="210" cy="700" rx="120" ry="70" fill="#48bb78" opacity="0.15"/>
+  <text x="500" y="80" text-anchor="middle" fill="#22543d" font-family="sans-serif" font-size="28" opacity="0.7">Botanical Study</text>
+  <text x="500" y="1370" text-anchor="middle" fill="#22543d" font-family="sans-serif" font-size="14" opacity="0.4">1000×1400 — 5:7</text>
+</svg>

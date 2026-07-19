@@ -1,0 +1,130 @@
+---
+import { Image, getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Work {
+    type: "image" | "video";
+    src: string;
+    alt: string;
+    caption?: string;
+    poster?: string;
+}
+
+interface Section {
+    title: string;
+    works: Work[];
+}
+
+interface Props {
+    sections: Section[];
+    email: string;
+}
+
+const { sections, email } = Astro.props;
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+    "/src/assets/works/*.{svg,jpg,jpeg,png,webp,gif}",
+    { eager: true },
+);
+
+function resolveImage(path: string): ImageMetadata | undefined {
+    return imageModules[path]?.default;
+}
+
+const FIRST_ROW_COUNT = 4;
+const SIZES = "(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw";
+const WIDTHS = [400, 800, 1200, 1600];
+
+// Collect all image works and generate lightbox renditions
+type ResolvedImageWork = Work & { image: ImageMetadata };
+
+const allImageWorks: ResolvedImageWork[] = [];
+for (const section of sections) {
+    for (const work of section.works) {
+        if (work.type !== "image") continue;
+        const img = resolveImage(work.src);
+        if (!img) continue;
+        allImageWorks.push({ ...work, image: img });
+    }
+}
+
+const lightboxImages = await Promise.all(
+    allImageWorks.map((w) =>
+        getImage({ src: w.image, width: 1800, format: "webp", quality: 85 }),
+    ),
+);
+const lightboxMap = new Map(
+    allImageWorks.map((w, i) => [w.src, lightboxImages[i]!]),
+);
+
+// Flat index across all sections for lazy-load threshold
+let gridIndex = 0;
+---
+
+<div id="portfolio-gallery" data-email={email}>
+    {
+        sections.map((section) => {
+            const works = section.works
+                .filter((w) => w.type === "image")
+                .map((w) => {
+                    const img = resolveImage(w.src);
+                    if (!img) return null;
+                    const lb = lightboxMap.get(w.src);
+                    return { work: w, image: img, lb };
+                })
+                .filter(Boolean);
+
+            if (works.length === 0) return null;
+
+            return (
+                <section class="pb-16">
+                    <h2 class="mb-6 text-xs font-medium tracking-widest uppercase text-muted">
+                        {section.title}
+                    </h2>
+                    <div class="justified-gallery">
+                        {works.map((item) => {
+                            const work = item!.work;
+                            const img = item.image!;
+                            const lb = item.lb;
+                            const i = gridIndex++;
+                            const isFirst = i === 0;
+
+                            return (
+                                <a
+                                    href={lb?.src ?? work.src}
+                                    class="gallery-item block cursor-pointer rounded-sm focus-visible:z-10 focus-visible:scale-105 focus-visible:rounded-sm focus-visible:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                                    style={`--width: ${img.width}; --height: ${img.height};`}
+                                    data-pswp-width={lb?.attributes.width}
+                                    data-pswp-height={lb?.attributes.height}
+                                    data-caption={work.caption || ""}
+                                    data-alt={work.alt}
+                                >
+                                    <Image
+                                        src={img}
+                                        alt={work.alt}
+                                        widths={WIDTHS}
+                                        sizes={SIZES}
+                                        loading={
+                                            i < FIRST_ROW_COUNT
+                                                ? "eager"
+                                                : "lazy"
+                                        }
+                                        fetchpriority={
+                                            isFirst ? "high" : undefined
+                                        }
+                                        decoding={
+                                            i < FIRST_ROW_COUNT
+                                                ? "sync"
+                                                : "async"
+                                        }
+                                        class="block h-full w-full object-cover transition-opacity duration-200 hover:opacity-90 motion-reduce:transition-none motion-reduce:hover:opacity-100"
+                                    />
+                                </a>
+                            );
+                        })}
+                    </div>
+                </section>
+            );
+        })
+    }
+</div>

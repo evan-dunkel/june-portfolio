@@ -1,0 +1,184 @@
+---
+interface Props {
+    value: string;
+    /** Label shown before copying. Defaults to the value itself. */
+    label?: string;
+    /** Label shown briefly after copying. */
+    copiedLabel?: string;
+    /** Show the email as text (default) or just a "Copy" prompt. */
+    variant?: "email" | "copy";
+    class?: string;
+}
+
+const {
+    value,
+    label,
+    copiedLabel = "Copied",
+    variant = "email",
+    class: className = "",
+} = Astro.props;
+
+const displayLabel = label ?? value;
+---
+
+<button
+    type="button"
+    class={[
+        "copy-btn group relative inline-flex items-center gap-1.5 rounded-md px-1 -mx-1 py-0.5",
+        "text-sm text-muted",
+        "transition-colors duration-150 hover:text-foreground",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
+        className,
+    ].join(" ")}
+    aria-label={`Copy${variant === "copy" ? "" : " email address"}: ${value}`}
+    data-copy-trigger
+    data-copy-value={value}
+>
+    <!-- Invisible text for height reservation + screen-readers -->
+    <span class="invisible h-0 overflow-hidden" aria-hidden="true"
+        >{displayLabel}</span
+    >
+
+    <!-- Default label -->
+    <span
+        data-copy-label
+        class="absolute inset-0 flex items-center gap-1.5 px-1 transition-all duration-400"
+        style="transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);"
+    >
+        <!-- Copy icon (subtle, appears on hover) -->
+        <svg
+            data-copy-icon
+            class="h-3.5 w-3.5 shrink-0 opacity-0 transition-all duration-200 group-hover:opacity-100"
+            style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+            ></path>
+        </svg>
+        {
+            variant === "email" ? (
+                <span class="select-all">{displayLabel}</span>
+            ) : (
+                <span>Copy</span>
+            )
+        }
+    </span>
+
+    <!-- Copied label (hidden by default, springs in) -->
+    <span
+        data-copy-confirm
+        class="absolute inset-0 flex items-center gap-1.5 px-1 opacity-0 transition-all duration-400"
+        style="
+      transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateY(0.3em) scale(0.9);
+    "
+    >
+        <!-- Checkmark icon -->
+        <svg
+            data-copy-check
+            class="h-3.5 w-3.5 shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>{copiedLabel}</span>
+    </span>
+</button>
+
+<style>
+    .copy-btn {
+        /* Press squish */
+        transition: transform 0.1s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .copy-btn:active {
+        transform: scale(0.97);
+    }
+
+    /* Copied state — label exits up, confirm bounces in */
+    .copy-btn[data-copied] [data-copy-label] {
+        opacity: 0;
+        transform: translateY(-0.3em) scale(0.9);
+    }
+    .copy-btn[data-copied] [data-copy-confirm] {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Checkmark scale-in animation on confirmed state */
+    .copy-btn[data-copied] [data-copy-check] {
+        animation: check-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes check-pop {
+        0% {
+            transform: scale(0) rotate(-90deg);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+</style>
+
+<script>
+    function initCopyButtons() {
+        const triggers = document.querySelectorAll<HTMLButtonElement>(
+            "[data-copy-trigger]",
+        );
+
+        triggers.forEach((trigger) => {
+            const value = trigger.dataset.copyValue ?? "";
+            let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+            const copy = async () => {
+                // Bail if already showing "Copied"
+                if (trigger.hasAttribute("data-copied")) return;
+
+                try {
+                    await navigator.clipboard.writeText(value);
+                } catch {
+                    const ta = document.createElement("textarea");
+                    ta.value = value;
+                    ta.style.position = "fixed";
+                    ta.style.opacity = "0";
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(ta);
+                }
+
+                // Show copied state
+                trigger.setAttribute("data-copied", "");
+
+                if (timeoutId) clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    trigger.removeAttribute("data-copied");
+                }, 1800);
+            };
+
+            trigger.addEventListener("click", copy);
+
+            trigger.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    copy();
+                }
+            });
+        });
+    }
+
+    initCopyButtons();
+</script>

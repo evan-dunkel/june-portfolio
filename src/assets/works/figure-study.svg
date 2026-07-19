@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#faf5ff"/>
+  <path d="M200,100 Q250,300 200,500 T220,800 T200,1100" stroke="#553c9a" stroke-width="6" fill="none" opacity="0.15"/>
+  <path d="M350,150 Q300,350 350,550 T320,850 T350,1150" stroke="#6b46c1" stroke-width="5" fill="none" opacity="0.12"/>
+  <path d="M500,200 Q550,400 500,600 T520,900 T500,1150" stroke="#805ad5" stroke-width="4" fill="none" opacity="0.1"/>
+  <path d="M650,100 Q600,300 650,500 T620,800 T650,1150" stroke="#6b46c1" stroke-width="5" fill="none" opacity="0.12"/>
+  <text x="450" y="80" text-anchor="middle" fill="#553c9a" font-family="sans-serif" font-size="28" opacity="0.7">Figure Study</text>
+  <text x="450" y="1170" text-anchor="middle" fill="#553c9a" font-family="sans-serif" font-size="14" opacity="0.4">900×1200 — 3:4</text>
+</svg>

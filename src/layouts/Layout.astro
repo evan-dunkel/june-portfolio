@@ -1,17 +1,27 @@
 ---
+import Header from "../components/Header.astro";
 import "../styles/global.css";
+
+interface Props {
+    name: string;
+    email: string;
+    tagline: string;
+}
+
+const { name, email, tagline } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>June Lee — Illustration</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-  </head>
-  <body class="bg-background text-foreground antialiased">
-    <slot />
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>June Lee — Illustration</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+    </head>
+    <body class="min-h-screen bg-background text-foreground antialiased">
+        <Header name={name} email={email} tagline={tagline} />
+        <slot />
+    </body>
 </html>

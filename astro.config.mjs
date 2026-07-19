@@ -7,6 +7,10 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   output: 'static',
 
+  image: {
+    dangerouslyProcessSVG: true,
+  },
+
   vite: {
     plugins: [tailwindcss()]
   }

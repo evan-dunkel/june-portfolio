@@ -1,4 +1,119 @@
-# Pages CMS configuration (Phase 6)
-# Placeholder — full config added during Phase 6.
-site_name: "June Lee Portfolio"
-pages: []
+# Pages CMS configuration for June Lee Portfolio
+# After editing, each save commits to git and triggers a redeploy on Cloudflare Pages.
+# Docs: https://pagescms.org/docs/configuration/overview
+
+# ── Media: where uploaded files live ──────────────────────────────────
+
+media:
+  - name: works_images
+    label: Artwork Images
+    input: src/assets/works
+    output: /src/assets/works
+    extensions:
+      - svg
+      - jpg
+      - jpeg
+      - png
+      - webp
+      - gif
+    categories: [image]
+
+  - name: works_videos
+    label: Videos
+    input: public/videos
+    output: /videos
+    extensions:
+      - mp4
+      - webm
+    categories: [video]
+
+# ── Content: what editors can change ──────────────────────────────────
+
+content:
+  # ── Site settings ──────────────────────────────────────────────────
+
+  - name: settings
+    label: Settings
+    type: file
+    path: src/content/settings/settings.yml
+    format: yaml
+    fields:
+      - name: name
+        label: Name
+        type: string
+        description: Your full name as it appears at the top of the site.
+
+      - name: email
+        label: Email
+        type: string
+        description: Your contact email. Visitors can tap it to copy to their clipboard.
+
+      - name: tagline
+        label: Tagline
+        type: string
+        description: Short phrase under your name, like "Illustration" or "Visual Artist".
+        required: false
+
+      - name: about
+        label: About
+        type: text
+        description: Optional 1–2 sentence blurb about your work. Leave empty to hide this section.
+        required: false
+
+  # ── Portfolio works ────────────────────────────────────────────────
+
+  - name: portfolio
+    label: Portfolio
+    type: file
+    path: src/content/portfolio/works.yml
+    format: yaml
+    fields:
+      - name: sections
+        label: Sections
+        type: object
+        list: true
+        description: Drag to reorder sections. The top section appears first on the page.
+        fields:
+          - name: title
+            label: Section Title
+            type: string
+            description: e.g. "Recent", "Editorial", "Personal Work"
+
+          - name: works
+            label: Works
+            type: object
+            list: true
+            description: Drag to reorder work within this section. The top item appears first.
+            fields:
+              - name: type
+                label: Type
+                type: select
+                options:
+                  - value: image
+                    label: Image
+                  - value: video
+                    label: Video
+                default: image
+                description: "Image" for still artwork, "Video" for animation loops.
+
+              - name: src
+                label: Source File
+                type: image
+                description: Select your image file from the media library. For videos, type the path (e.g. /videos/my-loop.mp4).
+
+              - name: alt
+                label: Alt Text
+                type: string
+                description: Describe the artwork for screen readers and search engines. Keep it short and descriptive.
+
+              - name: caption
+                label: Caption
+                type: text
+                description: Optional description shown in the lightbox when viewing full-size. 1–2 sentences.
+                required: false
+
+              - name: poster
+                label: Poster Image
+                type: image
+                description: Thumbnail image shown in the grid for video works. Required for videos, ignored for images.
+                required: false

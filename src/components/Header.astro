@@ -1,0 +1,171 @@
+---
+interface Props {
+    name: string;
+    email: string;
+    tagline?: string;
+}
+
+const { name, email, tagline } = Astro.props;
+---
+
+<header
+    class="sticky top-0 z-50 border-b border-foreground/5 bg-background/80 backdrop-blur-md"
+    data-header
+>
+    <div
+        class="mx-auto flex h-14 max-w-[1600px] items-center justify-between px-gutter"
+    >
+        <!-- Left: name + tagline -->
+        <div class="flex min-w-0 items-baseline gap-2">
+            <span class="truncate text-base font-medium text-foreground"
+                >{name}</span
+            >
+            {
+                tagline && (
+                    <span class="hidden truncate text-sm text-muted sm:inline">
+                        {tagline}
+                    </span>
+                )
+            }
+        </div>
+
+        <!-- Right: email copy widget -->
+        <div class="flex shrink-0 items-center gap-1">
+            <button
+                type="button"
+                class="copy-btn group relative flex items-center gap-1.5 rounded-sm py-0.5 text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                aria-label={`Copy email address: ${email}`}
+                data-copy-trigger
+                data-copy-value={email}
+            >
+                <span class="select-all">{email}</span>
+                <!-- Icon container -->
+                <span
+                    class="relative flex h-4 w-4 shrink-0 items-center justify-center"
+                >
+                    <!-- Copy icon -->
+                    <svg
+                        class="copy-icon absolute h-4 w-4 transition-all duration-200"
+                        style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"
+                        ></rect>
+                        <path
+                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                        ></path>
+                    </svg>
+                    <!-- Check icon -->
+                    <svg
+                        class="check-icon absolute h-4 w-4 transition-all duration-400"
+                        style="transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<style>
+    .copy-btn .check-icon {
+        opacity: 0;
+        transform: scale(0) rotate(-90deg);
+    }
+
+    .copy-btn .copy-icon {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .copy-btn[data-copied] .copy-icon {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    .copy-btn[data-copied] .check-icon {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    /* Press feedback — instant on touch-down */
+    .copy-btn:active {
+        transform: scale(0.97);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .copy-btn .copy-icon,
+        .copy-btn .check-icon {
+            transition-duration: 0s;
+        }
+        .copy-btn:active {
+            transform: none;
+        }
+    }
+</style>
+
+<script>
+    function initCopyButtons() {
+        const triggers = document.querySelectorAll<HTMLButtonElement>(
+            "[data-copy-trigger]",
+        );
+
+        triggers.forEach((trigger) => {
+            const value = trigger.dataset.copyValue ?? "";
+            let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+            const copy = async () => {
+                // Bail if already showing the check
+                if (trigger.hasAttribute("data-copied")) return;
+
+                try {
+                    await navigator.clipboard.writeText(value);
+                } catch {
+                    // Fallback: use execCommand for older browsers
+                    const ta = document.createElement("textarea");
+                    ta.value = value;
+                    ta.style.position = "fixed";
+                    ta.style.opacity = "0";
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(ta);
+                }
+
+                // Show check icon (springs in via CSS)
+                trigger.setAttribute("data-copied", "");
+
+                if (timeoutId) clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    trigger.removeAttribute("data-copied");
+                }, 2000);
+            };
+
+            trigger.addEventListener("click", copy);
+
+            // Keyboard: Enter / Space to copy
+            trigger.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    copy();
+                }
+            });
+        });
+    }
+
+    initCopyButtons();
+</script>

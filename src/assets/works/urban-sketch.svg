@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200">
+  <rect width="1800" height="1200" fill="#f7f0e8"/>
+  <rect x="200" y="150" width="300" height="200" fill="#e2d5c4" opacity="0.6" rx="2"/>
+  <rect x="550" y="250" width="120" height="150" fill="#c4a882" opacity="0.5" rx="2"/>
+  <rect x="720" y="120" width="140" height="350" fill="#d4b896" opacity="0.5" rx="2"/>
+  <circle cx="400" cy="400" r="30" fill="#a0522d" opacity="0.3"/>
+  <circle cx="500" cy="370" r="25" fill="#8b4513" opacity="0.25"/>
+  <rect x="950" y="200" width="250" height="180" fill="#e8d5c0" opacity="0.5" rx="2"/>
+  <rect x="1300" y="300" width="200" height="140" fill="#d4b896" opacity="0.5" rx="2"/>
+  <rect x="0" y="800" width="1800" height="400" fill="#e2d5c4" opacity="0.4"/>
+  <text x="900" y="80" text-anchor="middle" fill="#8b4513" font-family="sans-serif" font-size="36" opacity="0.7">Urban Sketch</text>
+  <text x="900" y="1170" text-anchor="middle" fill="#8b4513" font-family="sans-serif" font-size="14" opacity="0.4">1800×1200 — 3:2</text>
+</svg>
