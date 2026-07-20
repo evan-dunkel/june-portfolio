@@ -1,0 +1,21 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS payload as JSON
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages Deploy
+        run: |
+          curl -sS -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}" \
+            -H "Content-Type: application/json" \
+            -o /dev/null -w "HTTP %{http_code}"
+          echo ""
+          echo "Deploy triggered."

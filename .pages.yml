@@ -21,6 +21,15 @@ media:
       - webm
     categories: [video]
 
+actions:
+  - name: deploy
+    label: Deploy to Cloudflare
+    workflow: deploy.yml
+    confirm:
+      title: Deploy site?
+      message: This will trigger a deployment on Cloudflare Pages.
+      button: Deploy
+
 content:
   - name: settings
     label: Settings
