@@ -20,7 +20,7 @@ const workSchema = z.object({
 
 const sectionSchema = z.object({
   title: z.string().min(1, 'section title is required'),
-  works: z.array(workSchema).min(1, 'each section must have at least one work'),
+  works: z.array(workSchema).optional().default([]),
 });
 
 const portfolio = defineCollection({
