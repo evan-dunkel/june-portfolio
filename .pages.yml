@@ -79,16 +79,6 @@ content:
                 summary: "{alt}"
             description: Drag to reorder work within this section. The top item appears first.
             fields:
-              - name: type
-                label: Media Type
-                type: select
-                options:
-                  - value: image
-                    label: Image
-                  - value: video
-                    label: Video
-                description: Image for still artwork, Video for animation loops.
-
               - name: src
                 label: Source File
                 type: image

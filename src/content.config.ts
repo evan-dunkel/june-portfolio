@@ -11,29 +11,12 @@ const settings = defineCollection({
   }),
 });
 
-const workItemSchema = z.object({
-  type: z.enum(['image', 'video'], {
-    errorMap: () => ({ message: 'type must be "image" or "video"' }),
-  }),
+const workSchema = z.object({
   src: z.string().min(1, 'src is required'),
   alt: z.string().min(1, 'alt text is required'),
   caption: z.string().optional().default(''),
-});
-
-const videoWorkSchema = workItemSchema.extend({
-  type: z.literal('video'),
-  poster: z.string().min(1, 'poster is required when type is "video"'),
-});
-
-const imageWorkSchema = workItemSchema.extend({
-  type: z.literal('image'),
   poster: z.string().optional(),
 });
-
-const workSchema = z.discriminatedUnion('type', [
-  imageWorkSchema,
-  videoWorkSchema,
-]);
 
 const sectionSchema = z.object({
   title: z.string().min(1, 'section title is required'),

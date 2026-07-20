@@ -3,7 +3,6 @@ import { Image, getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 interface Work {
-    type: "image" | "video";
     src: string;
     alt: string;
     caption?: string;
@@ -41,7 +40,6 @@ type ResolvedImageWork = Work & { image: ImageMetadata };
 const allImageWorks: ResolvedImageWork[] = [];
 for (const section of sections) {
     for (const work of section.works) {
-        if (work.type !== "image") continue;
         const img = resolveImage(work.src);
         if (!img) continue;
         allImageWorks.push({ ...work, image: img });
@@ -65,7 +63,6 @@ let gridIndex = 0;
     {
         sections.map((section) => {
             const works = section.works
-                .filter((w) => w.type === "image")
                 .map((w) => {
                     const img = resolveImage(w.src);
                     if (!img) return null;
