@@ -1,5 +1,7 @@
 sections:
   - title: Recent
     works:
-      - {}
+      - src: /src/assets/works/Screenshot 2026-07-19 at 3.03.07 PM-1.png
+        alt: Joyful Forfeit
+        caption: Description about the work
   - title: Editorials
