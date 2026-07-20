@@ -61,7 +61,7 @@ content:
         type: object
         list: true
         description: Drag to reorder sections. The top section appears first on the page.
-        items:
+        fields:
           - name: title
             label: Section Title
             type: string
@@ -72,7 +72,7 @@ content:
             type: object
             list: true
             description: Drag to reorder work within this section. The top item appears first.
-            items:
+            fields:
               - name: type
                 label: Type
                 type: select
