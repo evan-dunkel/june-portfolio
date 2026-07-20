@@ -59,7 +59,10 @@ content:
       - name: sections
         label: Sections
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: false
+            summary: "{title}"
         description: Drag to reorder sections. The top section appears first on the page.
         fields:
           - name: title
@@ -70,7 +73,10 @@ content:
           - name: works
             label: Works
             type: object
-            list: true
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{alt}"
             description: Drag to reorder work within this section. The top item appears first.
             fields:
               - name: type
