@@ -1,9 +1,3 @@
-# Pages CMS configuration for June Lee Portfolio
-# After editing, each save commits to git and triggers a redeploy on Cloudflare Pages.
-# Docs: https://pagescms.org/docs/configuration/overview
-
-# ── Media: where uploaded files live ──────────────────────────────────
-
 media:
   - name: works_images
     label: Artwork Images
@@ -27,11 +21,7 @@ media:
       - webm
     categories: [video]
 
-# ── Content: what editors can change ──────────────────────────────────
-
 content:
-  # ── Site settings ──────────────────────────────────────────────────
-
   - name: settings
     label: Settings
     type: file
@@ -57,10 +47,8 @@ content:
       - name: about
         label: About
         type: text
-        description: Optional 1–2 sentence blurb about your work. Leave empty to hide this section.
+        description: Optional 1-2 sentence blurb about your work. Leave empty to hide this section.
         required: false
-
-  # ── Portfolio works ────────────────────────────────────────────────
 
   - name: portfolio
     label: Portfolio
@@ -94,7 +82,7 @@ content:
                   - value: video
                     label: Video
                 default: image
-                description: "Image" for still artwork, "Video" for animation loops.
+                description: Image for still artwork, Video for animation loops.
 
               - name: src
                 label: Source File
@@ -109,7 +97,7 @@ content:
               - name: caption
                 label: Caption
                 type: text
-                description: Optional description shown in the lightbox when viewing full-size. 1–2 sentences.
+                description: Optional description shown in the lightbox when viewing full-size. 1-2 sentences.
                 required: false
 
               - name: poster
