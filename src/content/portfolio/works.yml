@@ -5,3 +5,8 @@ sections:
         alt: Joyful Forfeit
         caption: Description about the work
   - title: Editorials
+  - title: Another section
+    works:
+      - src: /src/assets/works/jleeillus.png
+        alt: Illustration of June Lee
+        caption: A caption goes here lol.
