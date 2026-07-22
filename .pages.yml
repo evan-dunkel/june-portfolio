@@ -72,12 +72,12 @@ content:
           collapsible:
             collapsed: false
             summary: "{title}"
-        description: Drag to reorder sections. The top section appears first on the page.
+        description:
         fields:
           - name: title
             label: Section Title
             type: string
-            description: e.g. "Recent", "Editorial", "Personal Work"
+            description:
 
           - name: works
             label: Works
@@ -86,26 +86,26 @@ content:
               collapsible:
                 collapsed: true
                 summary: "{alt}"
-            description: Drag to reorder work within this section. The top item appears first.
+            description:
             fields:
               - name: src
-                label: Source File
+                label: File
                 type: image
-                description: Select your image file from the media library. For videos, type the path (e.g. /videos/my-loop.mp4).
+                description:
 
               - name: alt
                 label: Alt Text
                 type: string
-                description: Describe the artwork for screen readers and search engines. Keep it short and descriptive.
+                description: Description for screen readers and search engines (Short and descriptive is best)
 
               - name: caption
                 label: Caption
                 type: text
-                description: Optional description shown in the lightbox when viewing full-size. 1-2 sentences.
+                description: Optional description shown in the photo viewer
                 required: false
 
-              - name: poster
-                label: Poster Image
-                type: image
-                description: Thumbnail image shown in the grid for video works. Required for videos, ignored for images.
-                required: false
+              # - name: poster
+              #   label: Poster Image
+              #   type: image
+              #   description: Thumbnail image shown in the grid for video works. Required for videos, ignored for images.
+              #   required: false

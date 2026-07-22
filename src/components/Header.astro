@@ -11,18 +11,23 @@ const { name, email, tagline } = Astro.props;
 <header
     class="sticky top-0 z-50 border-b border-foreground/5 bg-background/80 backdrop-blur-md"
     data-header
+    data-dk="header"
 >
     <div
         class="mx-auto flex h-14 max-w-[1600px] items-center justify-between px-gutter"
     >
         <!-- Left: name + tagline -->
         <div class="flex min-w-0 items-baseline gap-2">
-            <span class="truncate text-base font-medium text-foreground"
-                >{name}</span
+            <span
+                class="truncate text-base font-medium text-foreground"
+                data-dk="name">{name}</span
             >
             {
                 tagline && (
-                    <span class="hidden truncate text-sm text-muted sm:inline">
+                    <span
+                        class="hidden truncate text-sm text-muted sm:inline"
+                        data-dk="tagline"
+                    >
                         {tagline}
                     </span>
                 )
@@ -37,6 +42,7 @@ const { name, email, tagline } = Astro.props;
                 aria-label={`Copy email address: ${email}`}
                 data-copy-trigger
                 data-copy-value={email}
+                data-dk="email"
             >
                 <span class="select-all">{email}</span>
                 <!-- Icon container -->
