@@ -1,1008 +1,1004 @@
 ---
-// DialKit — dev-only design controls
-// Gated behind import.meta.env.DEV; never ships to production.
-// const isDev = import.meta.env.DEV;
+
 ---
 
-{
-  isDev && (
-    <>
-      <!-- Toggle button -->
-      <button
+<>
+    <!-- Toggle button -->
+    <button
         id="dk-toggle"
         class="fixed bottom-4 right-4 z-9999 flex h-9 w-9 items-center justify-center rounded-full bg-neutral-900 text-xs font-bold text-white shadow-lg transition-transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         title="Toggle DialKit (Ctrl+Shift+D)"
         aria-label="Toggle DialKit design controls"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20h9" />
-          <path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" />
-          <path d="M15 5l3 3" />
+    >
+        <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <path d="M12 20h9"></path>
+            <path
+                d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"
+            ></path>
+            <path d="M15 5l3 3"></path>
         </svg>
-      </button>
+    </button>
 
-      <!-- Panel -->
-      <div
+    <!-- Panel -->
+    <div
         id="dk-panel"
         class="fixed bottom-16 right-4 z-9998 hidden w-72 rounded-lg border border-neutral-700 bg-neutral-900/95 text-sm text-neutral-200 shadow-2xl backdrop-blur-md"
-      >
+    >
         <!-- Header -->
-        <div class="flex items-center justify-between border-b border-neutral-700 px-4 py-3">
-          <span class="text-xs font-semibold uppercase tracking-widest text-neutral-400">DialKit</span>
-          <div class="flex items-center gap-1">
-            <button
-              id="dk-eyedropper-btn"
-              class="flex h-7 w-7 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-white"
-              title="Eyedropper — pick an element to style (Ctrl+Shift+E)"
-              aria-label="Eyedropper: pick element to style"
+        <div
+            class="flex items-center justify-between border-b border-neutral-700 px-4 py-3"
+        >
+            <span
+                class="text-xs font-semibold uppercase tracking-widest text-neutral-400"
+                >DialKit</span
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 20h9" />
-                <path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" />
-                <path d="M15 5l3 3" />
-              </svg>
-            </button>
-            <button
-              id="dk-close-btn"
-              class="flex h-7 w-7 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-white"
-              aria-label="Close DialKit"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          </div>
+            <div class="flex items-center gap-1">
+                <button
+                    id="dk-eyedropper-btn"
+                    class="flex h-7 w-7 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-white"
+                    title="Eyedropper — pick an element to style (Ctrl+Shift+E)"
+                    aria-label="Eyedropper: pick element to style"
+                >
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M12 20h9"></path>
+                        <path
+                            d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"
+                        ></path>
+                        <path d="M15 5l3 3"></path>
+                    </svg>
+                </button>
+                <button
+                    id="dk-close-btn"
+                    class="flex h-7 w-7 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-white"
+                    aria-label="Close DialKit"
+                >
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <!-- Target info -->
-        <div id="dk-target-section" class="border-b border-neutral-800 px-4 py-2.5">
-          <div class="flex items-center gap-2">
-            <button
-              id="dk-choose-element-btn"
-              class="flex items-center gap-1.5 rounded bg-neutral-800 px-2.5 py-1.5 text-[11px] font-medium text-neutral-300 transition-colors hover:bg-neutral-700 hover:text-white"
-              title="Choose an element to style (Ctrl+Shift+E)"
+        <div
+            id="dk-target-section"
+            class="border-b border-neutral-800 px-4 py-2.5"
+        >
+            <div class="flex items-center justify-between gap-2">
+                <span
+                    class="text-[11px] uppercase tracking-wider text-neutral-500"
+                    >Target</span
+                >
+                <span
+                    id="dk-target-name"
+                    class="text-xs font-medium text-neutral-300"
+                >
+                    None selected
+                </span>
+            </div>
+            <p
+                id="dk-target-hint"
+                class="mt-1 text-[11px] leading-relaxed text-neutral-600"
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="6" />
-                <circle cx="12" cy="12" r="2" />
-              </svg>
-              Choose Element
-            </button>
-            <span id="dk-target-name" class="text-xs font-medium text-neutral-500">
-              None
-            </span>
-          </div>
+                Use the eyedropper or click an element tag below.
+            </p>
         </div>
 
         <!-- Quick-select element type chips -->
         <div class="border-b border-neutral-800 px-4 py-2.5">
-          <span class="mb-2 block text-[11px] uppercase tracking-wider text-neutral-500">Quick Select</span>
-          <div id="dk-element-chips" class="flex flex-wrap gap-1.5">
-          </div>
+            <span
+                class="mb-2 block text-[11px] uppercase tracking-wider text-neutral-500"
+                >Quick Select</span
+            >
+            <div id="dk-element-chips" class="flex flex-wrap gap-1.5"></div>
         </div>
 
         <!-- Controls -->
         <div id="dk-controls" class="max-h-64 overflow-y-auto px-4 py-3">
-          <p class="text-[11px] text-neutral-600">Select an element type to see controls.</p>
+            <p class="text-[11px] text-neutral-600">
+                Select an element type to see controls.
+            </p>
         </div>
 
         <!-- Footer -->
         <div class="border-t border-neutral-800 px-4 py-2.5">
-          <button
-            id="dk-reset-btn"
-            class="w-full rounded bg-neutral-800 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-neutral-400 transition-colors hover:bg-red-900/50 hover:text-red-300"
-          >
-            Reset All Overrides
-          </button>
+            <button
+                id="dk-reset-btn"
+                class="w-full rounded bg-neutral-800 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-neutral-400 transition-colors hover:bg-red-900/50 hover:text-red-300"
+            >
+                Reset All Overrides
+            </button>
         </div>
-      </div>
+    </div>
 
-      <!-- Override styles injected by DialKit -->
-      <style id="dk-override-styles"></style>
+    <!-- Override styles injected by DialKit -->
+    <style id="dk-override-styles"></style>
 
-      <!-- Eyedropper overlay (shown during pick mode) -->
-      <div
+    <!-- Eyedropper overlay (shown during pick mode) -->
+    <div
         id="dk-eyedropper-overlay"
         class="pointer-events-none fixed inset-0 z-9996 hidden"
         aria-hidden="true"
-      >
+    >
         <div
-          id="dk-eyedropper-tooltip"
-          class="absolute rounded bg-neutral-900 px-2 py-1 text-[11px] text-white shadow-lg"
-          style="transform: translate(-50%, -120%)"
-        ></div>
-      </div>
+            id="dk-eyedropper-tooltip"
+            class="absolute rounded bg-neutral-900 px-2 py-1 text-[11px] text-white shadow-lg"
+            style="transform: translate(-50%, -120%)"
+        >
+        </div>
+    </div>
 
-      <script>
+    <script>
         // ── DialKit Client Script ──────────────────────────────────────
         (function () {
-          // ── Element type configs ─────────────────────────────────────
-          const ELEMENT_CONFIGS: Record<
-            string,
-            {
-              label: string;
-              controls: string[];
-            }
-          > = {
-            body: {
-              label: "Page Background",
-              controls: ["background-color"],
-            },
-            header: {
-              label: "Header",
-              controls: ["background-color"],
-            },
-            name: {
-              label: "Name",
-              controls: [
-                "color",
-                "font-family",
-                "text-transform",
-                "font-weight",
-                "font-size",
-              ],
-            },
-            tagline: {
-              label: "Tagline",
-              controls: ["color", "font-family", "text-transform", "font-size"],
-            },
-            email: {
-              label: "Email",
-              controls: ["color", "font-size"],
-            },
-            "section-header": {
-              label: "Section Header",
-              controls: [
-                "color",
-                "font-family",
-                "text-transform",
-                "font-weight",
-                "font-size",
-                "letter-spacing",
-              ],
-            },
-          };
-
-          const CONTROL_LABELS: Record<string, string> = {
-            "background-color": "Background",
-            color: "Text Color",
-            "font-family": "Font",
-            "text-transform": "Case",
-            "font-weight": "Weight",
-            "font-size": "Size",
-            "letter-spacing": "Tracking",
-          };
-
-          const FONT_OPTIONS = [
-            { value: "", label: "Default" },
-            { value: "system-ui, -apple-system, sans-serif", label: "System UI" },
-            { value: "Georgia, 'Times New Roman', serif", label: "Serif" },
-            { value: "'Courier New', Courier, monospace", label: "Monospace" },
-            { value: "Inter, system-ui, sans-serif", label: "Inter" },
-            { value: "custom", label: "Custom…" },
-          ];
-
-          const TEXT_TRANSFORM_OPTIONS = [
-            { value: "", label: "Default" },
-            { value: "none", label: "None" },
-            { value: "uppercase", label: "UPPERCASE" },
-            { value: "lowercase", label: "lowercase" },
-            { value: "capitalize", label: "Title Case" },
-          ];
-
-          const FONT_WEIGHT_OPTIONS = [
-            { value: "", label: "Default" },
-            { value: "300", label: "Light (300)" },
-            { value: "400", label: "Regular (400)" },
-            { value: "500", label: "Medium (500)" },
-            { value: "600", label: "Semibold (600)" },
-            { value: "700", label: "Bold (700)" },
-            { value: "800", label: "Extra Bold (800)" },
-          ];
-
-          const FONT_SIZE_OPTIONS = [
-            { value: "", label: "Default" },
-            { value: "0.75rem", label: "xs (12px)" },
-            { value: "0.875rem", label: "sm (14px)" },
-            { value: "1rem", label: "base (16px)" },
-            { value: "1.125rem", label: "lg (18px)" },
-            { value: "1.25rem", label: "xl (20px)" },
-            { value: "1.5rem", label: "2xl (24px)" },
-            { value: "2rem", label: "3xl (32px)" },
-          ];
-
-          const LETTER_SPACING_OPTIONS = [
-            { value: "", label: "Default" },
-            { value: "normal", label: "Normal" },
-            { value: "0.05em", label: "Wide" },
-            { value: "0.1em", label: "Wider" },
-            { value: "0.2em", label: "Extra Wide" },
-            { value: "-0.02em", label: "Tight" },
-            { value: "-0.05em", label: "Tighter" },
-          ];
-
-          // ── State ────────────────────────────────────────────────────
-          interface OverrideValues {
-            [prop: string]: string | null;
-          }
-
-          interface State {
-            open: boolean;
-            selectedType: string | null;
-            eyedropperActive: boolean;
-            overrides: Record<string, OverrideValues>;
-          }
-
-          const STORAGE_KEY = "dialkit-overrides";
-
-          function loadState(): State {
-            try {
-              const raw = localStorage.getItem(STORAGE_KEY);
-              if (raw) {
-                const parsed = JSON.parse(raw);
-                return {
-                  open: false,
-                  selectedType: null,
-                  eyedropperActive: false,
-                  overrides: parsed.overrides || {},
-                };
-              }
-            } catch {}
-            return {
-              open: false,
-              selectedType: null,
-              eyedropperActive: false,
-              overrides: {},
+            // ── Element type configs ─────────────────────────────────────
+            const ELEMENT_CONFIGS: Record<
+                string,
+                {
+                    label: string;
+                    controls: string[];
+                }
+            > = {
+                body: {
+                    label: "Page Background",
+                    controls: ["background-color"],
+                },
+                header: {
+                    label: "Header",
+                    controls: ["background-color"],
+                },
+                name: {
+                    label: "Name",
+                    controls: [
+                        "color",
+                        "font-family",
+                        "text-transform",
+                        "font-weight",
+                        "font-size",
+                    ],
+                },
+                tagline: {
+                    label: "Tagline",
+                    controls: [
+                        "color",
+                        "font-family",
+                        "text-transform",
+                        "font-size",
+                    ],
+                },
+                email: {
+                    label: "Email",
+                    controls: ["color", "font-size"],
+                },
+                "section-header": {
+                    label: "Section Header",
+                    controls: [
+                        "color",
+                        "font-family",
+                        "text-transform",
+                        "font-weight",
+                        "font-size",
+                        "letter-spacing",
+                    ],
+                },
             };
-          }
 
-          function saveOverrides(overrides: Record<string, OverrideValues>) {
-            try {
-              localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify({ overrides }),
-              );
-            } catch {}
-          }
+            const CONTROL_LABELS: Record<string, string> = {
+                "background-color": "Background",
+                color: "Text Color",
+                "font-family": "Font",
+                "text-transform": "Case",
+                "font-weight": "Weight",
+                "font-size": "Size",
+                "letter-spacing": "Tracking",
+            };
 
-          let state = loadState();
+            const FONT_OPTIONS = [
+                { value: "", label: "Default" },
+                {
+                    value: "system-ui, -apple-system, sans-serif",
+                    label: "System UI",
+                },
+                { value: "Georgia, 'Times New Roman', serif", label: "Serif" },
+                {
+                    value: "'Courier New', Courier, monospace",
+                    label: "Monospace",
+                },
+                { value: "Inter, system-ui, sans-serif", label: "Inter" },
+                { value: "custom", label: "Custom…" },
+            ];
 
-          // ── DOM refs ─────────────────────────────────────────────────
-          const toggleBtn = document.getElementById("dk-toggle")!;
-          const panel = document.getElementById("dk-panel")!;
-          const closeBtn = document.getElementById("dk-close-btn")!;
-          const eyedropperBtn = document.getElementById("dk-eyedropper-btn")!;
-          const targetName = document.getElementById("dk-target-name")!;
-          const targetSection = document.getElementById("dk-target-section")!;
-          const chooseElementBtn = document.getElementById("dk-choose-element-btn")!;
-          const controlsEl = document.getElementById("dk-controls")!;
-          const overrideStyles = document.getElementById(
-            "dk-override-styles",
-          )! as HTMLStyleElement;
-          const resetBtn = document.getElementById("dk-reset-btn")!;
-          const elementChips = document.getElementById("dk-element-chips")!;
-          const eyedropperOverlay = document.getElementById(
-            "dk-eyedropper-overlay",
-          )!;
-          const eyedropperTooltip = document.getElementById(
-            "dk-eyedropper-tooltip",
-          )!;
+            const TEXT_TRANSFORM_OPTIONS = [
+                { value: "", label: "Default" },
+                { value: "none", label: "None" },
+                { value: "uppercase", label: "UPPERCASE" },
+                { value: "lowercase", label: "lowercase" },
+                { value: "capitalize", label: "Title Case" },
+            ];
 
-          // ── Render element type chips ───────────────────────────────
-          function renderElementChips() {
-            elementChips.innerHTML = "";
-            for (const [type, config] of Object.entries(ELEMENT_CONFIGS)) {
-              const chip = document.createElement("button");
-              chip.className =
-                "rounded px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider transition-colors";
-              if (state.selectedType === type) {
-                chip.className += " bg-blue-600 text-white";
-              } else {
-                chip.className +=
-                  " bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-neutral-200";
-              }
-              chip.textContent = config.label;
-              chip.addEventListener("click", () => selectType(type));
-              elementChips.appendChild(chip);
+            const FONT_WEIGHT_OPTIONS = [
+                { value: "", label: "Default" },
+                { value: "300", label: "Light (300)" },
+                { value: "400", label: "Regular (400)" },
+                { value: "500", label: "Medium (500)" },
+                { value: "600", label: "Semibold (600)" },
+                { value: "700", label: "Bold (700)" },
+                { value: "800", label: "Extra Bold (800)" },
+            ];
+
+            const FONT_SIZE_OPTIONS = [
+                { value: "", label: "Default" },
+                { value: "0.75rem", label: "xs (12px)" },
+                { value: "0.875rem", label: "sm (14px)" },
+                { value: "1rem", label: "base (16px)" },
+                { value: "1.125rem", label: "lg (18px)" },
+                { value: "1.25rem", label: "xl (20px)" },
+                { value: "1.5rem", label: "2xl (24px)" },
+                { value: "2rem", label: "3xl (32px)" },
+            ];
+
+            const LETTER_SPACING_OPTIONS = [
+                { value: "", label: "Default" },
+                { value: "normal", label: "Normal" },
+                { value: "0.05em", label: "Wide" },
+                { value: "0.1em", label: "Wider" },
+                { value: "0.2em", label: "Extra Wide" },
+                { value: "-0.02em", label: "Tight" },
+                { value: "-0.05em", label: "Tighter" },
+            ];
+
+            // ── State ────────────────────────────────────────────────────
+            interface OverrideValues {
+                [prop: string]: string | null;
             }
-          }
 
-          // ── Select element type ─────────────────────────────────────
-          function selectType(type: string | null) {
-            state.selectedType = type;
+            interface State {
+                open: boolean;
+                selectedType: string | null;
+                eyedropperActive: boolean;
+                overrides: Record<string, OverrideValues>;
+            }
+
+            const STORAGE_KEY = "dialkit-overrides";
+
+            function loadState(): State {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEY);
+                    if (raw) {
+                        const parsed = JSON.parse(raw);
+                        return {
+                            open: false,
+                            selectedType: null,
+                            eyedropperActive: false,
+                            overrides: parsed.overrides || {},
+                        };
+                    }
+                } catch {}
+                return {
+                    open: false,
+                    selectedType: null,
+                    eyedropperActive: false,
+                    overrides: {},
+                };
+            }
+
+            function saveOverrides(overrides: Record<string, OverrideValues>) {
+                try {
+                    localStorage.setItem(
+                        STORAGE_KEY,
+                        JSON.stringify({ overrides }),
+                    );
+                } catch {}
+            }
+
+            let state = loadState();
+
+            // ── DOM refs ─────────────────────────────────────────────────
+            const toggleBtn = document.getElementById("dk-toggle")!;
+            const panel = document.getElementById("dk-panel")!;
+            const closeBtn = document.getElementById("dk-close-btn")!;
+            const eyedropperBtn = document.getElementById("dk-eyedropper-btn")!;
+            const targetName = document.getElementById("dk-target-name")!;
+            const targetHint = document.getElementById("dk-target-hint")!;
+            const targetSection = document.getElementById("dk-target-section")!;
+            const controlsEl = document.getElementById("dk-controls")!;
+            const overrideStyles = document.getElementById(
+                "dk-override-styles",
+            )! as HTMLStyleElement;
+            const resetBtn = document.getElementById("dk-reset-btn")!;
+            const elementChips = document.getElementById("dk-element-chips")!;
+            const eyedropperOverlay = document.getElementById(
+                "dk-eyedropper-overlay",
+            )!;
+            const eyedropperTooltip = document.getElementById(
+                "dk-eyedropper-tooltip",
+            )!;
+
+            // ── Render element type chips ───────────────────────────────
+            function renderElementChips() {
+                elementChips.innerHTML = "";
+                for (const [type, config] of Object.entries(ELEMENT_CONFIGS)) {
+                    const chip = document.createElement("button");
+                    chip.className =
+                        "rounded px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider transition-colors";
+                    if (state.selectedType === type) {
+                        chip.className += " bg-blue-600 text-white";
+                    } else {
+                        chip.className +=
+                            " bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-neutral-200";
+                    }
+                    chip.textContent = config.label;
+                    chip.addEventListener("click", () => selectType(type));
+                    elementChips.appendChild(chip);
+                }
+            }
+
+            // ── Select element type ─────────────────────────────────────
+            function selectType(type: string | null) {
+                state.selectedType = type;
+                renderElementChips();
+                renderControls();
+                updateTargetDisplay();
+            }
+
+            function updateTargetDisplay() {
+                if (state.selectedType && ELEMENT_CONFIGS[state.selectedType]) {
+                    targetName.textContent =
+                        ELEMENT_CONFIGS[state.selectedType].label;
+                    targetHint.style.display = "none";
+                    targetSection.classList.add(
+                        "border-blue-600/30",
+                        "bg-blue-600/5",
+                    );
+                } else {
+                    targetName.textContent = "None selected";
+                    targetHint.style.display = "";
+                    targetSection.classList.remove(
+                        "border-blue-600/30",
+                        "bg-blue-600/5",
+                    );
+                }
+            }
+
+            // ── Get/set override value ──────────────────────────────────
+            function getOverride(type: string, prop: string): string | null {
+                return state.overrides[type]?.[prop] ?? null;
+            }
+
+            function setOverride(
+                type: string,
+                prop: string,
+                value: string | null,
+            ) {
+                if (!state.overrides[type]) {
+                    state.overrides[type] = {};
+                }
+                if (value === "" || value === null) {
+                    delete state.overrides[type]![prop];
+                    if (Object.keys(state.overrides[type]!).length === 0) {
+                        delete state.overrides[type];
+                    }
+                } else {
+                    state.overrides[type]![prop] = value;
+                }
+                saveOverrides(state.overrides);
+                applyAllOverrides();
+                renderControls();
+            }
+
+            // ── Apply all overrides as CSS ──────────────────────────────
+            function applyAllOverrides() {
+                const rules: string[] = [];
+
+                for (const [type, props] of Object.entries(state.overrides)) {
+                    const declarations: string[] = [];
+                    for (const [prop, value] of Object.entries(props)) {
+                        if (value === null) continue;
+
+                        // Map our logical prop names to CSS
+                        const cssProp = prop; // they match directly
+                        declarations.push(`${cssProp}: ${value} !important;`);
+                    }
+                    if (declarations.length > 0) {
+                        const selector =
+                            type === "body" ? "body" : `[data-dk="${type}"]`;
+                        rules.push(`${selector} { ${declarations.join(" ")} }`);
+                    }
+                }
+
+                overrideStyles.textContent = rules.join("\n");
+            }
+
+            // ── Render controls for selected type ───────────────────────
+            function renderControls() {
+                if (
+                    !state.selectedType ||
+                    !ELEMENT_CONFIGS[state.selectedType]
+                ) {
+                    controlsEl.innerHTML =
+                        '<p class="text-[11px] text-neutral-600">Select an element type to see controls.</p>';
+                    return;
+                }
+
+                const config = ELEMENT_CONFIGS[state.selectedType];
+                const type = state.selectedType;
+                let html = '<div class="flex flex-col gap-3">';
+
+                for (const prop of config.controls) {
+                    const currentValue = getOverride(type, prop);
+                    const label = CONTROL_LABELS[prop] || prop;
+
+                    html +=
+                        '<div class="flex flex-col gap-1"><span class="text-[10px] uppercase tracking-wider text-neutral-500">' +
+                        label +
+                        "</span>";
+
+                    if (prop === "background-color" || prop === "color") {
+                        // Color picker
+                        html +=
+                            '<div class="flex items-center gap-2"><input type="color" class="dk-control dk-color-input h-7 w-8 cursor-pointer rounded border border-neutral-700 bg-transparent p-0" value="' +
+                            (currentValue || "#000000") +
+                            '" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '" />' +
+                            '<input type="text" class="dk-control dk-text-input flex-1 rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200 font-mono" value="' +
+                            (currentValue || "") +
+                            '" placeholder="Default" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '" /></div>';
+                    } else if (prop === "font-family") {
+                        // Font family select + custom input
+                        const isCustom =
+                            currentValue &&
+                            !FONT_OPTIONS.slice(0, -1).some(
+                                (o) => o.value === currentValue,
+                            );
+                        html +=
+                            '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '">';
+                        for (const opt of FONT_OPTIONS) {
+                            const selected =
+                                opt.value === "custom"
+                                    ? isCustom
+                                    : currentValue === opt.value;
+                            html +=
+                                '<option value="' +
+                                opt.value +
+                                '"' +
+                                (selected ? " selected" : "") +
+                                ">" +
+                                opt.label +
+                                "</option>";
+                        }
+                        html += "</select>";
+                        // Custom font input
+                        html +=
+                            '<input type="text" class="dk-control dk-custom-font rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200 font-mono" value="' +
+                            (isCustom ? currentValue || "" : "") +
+                            '" placeholder="Enter font name…" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '" style="' +
+                            (isCustom ? "" : "display:none") +
+                            '" />';
+                    } else if (prop === "text-transform") {
+                        html +=
+                            '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '">';
+                        for (const opt of TEXT_TRANSFORM_OPTIONS) {
+                            html +=
+                                '<option value="' +
+                                opt.value +
+                                '"' +
+                                (currentValue === opt.value ||
+                                (!currentValue && opt.value === "")
+                                    ? " selected"
+                                    : "") +
+                                ">" +
+                                opt.label +
+                                "</option>";
+                        }
+                        html += "</select>";
+                    } else if (prop === "font-weight") {
+                        html +=
+                            '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '">';
+                        for (const opt of FONT_WEIGHT_OPTIONS) {
+                            html +=
+                                '<option value="' +
+                                opt.value +
+                                '"' +
+                                (currentValue === opt.value ||
+                                (!currentValue && opt.value === "")
+                                    ? " selected"
+                                    : "") +
+                                ">" +
+                                opt.label +
+                                "</option>";
+                        }
+                        html += "</select>";
+                    } else if (prop === "font-size") {
+                        html +=
+                            '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '">';
+                        for (const opt of FONT_SIZE_OPTIONS) {
+                            html +=
+                                '<option value="' +
+                                opt.value +
+                                '"' +
+                                (currentValue === opt.value ||
+                                (!currentValue && opt.value === "")
+                                    ? " selected"
+                                    : "") +
+                                ">" +
+                                opt.label +
+                                "</option>";
+                        }
+                        html += "</select>";
+                    } else if (prop === "letter-spacing") {
+                        html +=
+                            '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '">';
+                        for (const opt of LETTER_SPACING_OPTIONS) {
+                            html +=
+                                '<option value="' +
+                                opt.value +
+                                '"' +
+                                (currentValue === opt.value ||
+                                (!currentValue && opt.value === "")
+                                    ? " selected"
+                                    : "") +
+                                ">" +
+                                opt.label +
+                                "</option>";
+                        }
+                        html += "</select>";
+                    }
+
+                    // Reset button for this property
+                    if (currentValue) {
+                        html +=
+                            '<button class="dk-reset-prop mt-0.5 self-end text-[9px] uppercase tracking-wider text-neutral-600 transition-colors hover:text-red-400" data-type="' +
+                            type +
+                            '" data-prop="' +
+                            prop +
+                            '">Reset</button>';
+                    }
+
+                    html += "</div>";
+                }
+
+                html += "</div>";
+                controlsEl.innerHTML = html;
+
+                // Bind control events
+                bindControlEvents();
+            }
+
+            function bindControlEvents() {
+                // Color inputs
+                controlsEl
+                    .querySelectorAll(".dk-color-input")
+                    .forEach((input) => {
+                        const el = input as HTMLInputElement;
+                        el.addEventListener("input", () => {
+                            const type = el.dataset.type!;
+                            const prop = el.dataset.prop!;
+                            setOverride(type, prop, el.value);
+                            // Sync text input
+                            const textInput = el.parentElement?.querySelector(
+                                ".dk-text-input",
+                            ) as HTMLInputElement;
+                            if (textInput) textInput.value = el.value;
+                        });
+                    });
+
+                // Text inputs (for color hex)
+                controlsEl
+                    .querySelectorAll(".dk-text-input")
+                    .forEach((input) => {
+                        const el = input as HTMLInputElement;
+                        el.addEventListener("change", () => {
+                            const type = el.dataset.type!;
+                            const prop = el.dataset.prop!;
+                            const val = el.value.trim();
+                            if (val === "") {
+                                setOverride(type, prop, null);
+                                // Reset color input too
+                                const colorInput =
+                                    el.parentElement?.querySelector(
+                                        ".dk-color-input",
+                                    ) as HTMLInputElement;
+                                if (colorInput) colorInput.value = "#000000";
+                            } else {
+                                setOverride(type, prop, val);
+                                // Sync color input
+                                const colorInput =
+                                    el.parentElement?.querySelector(
+                                        ".dk-color-input",
+                                    ) as HTMLInputElement;
+                                if (
+                                    colorInput &&
+                                    /^#[0-9a-fA-F]{6}$/.test(val)
+                                ) {
+                                    colorInput.value = val;
+                                }
+                            }
+                        });
+                        // Live update on input too
+                        el.addEventListener("input", () => {
+                            const type = el.dataset.type!;
+                            const prop = el.dataset.prop!;
+                            const val = el.value.trim();
+                            if (val === "") {
+                                setOverride(type, prop, null);
+                            } else if (/^#[0-9a-fA-F]{3,6}$/.test(val)) {
+                                setOverride(type, prop, val);
+                                const colorInput =
+                                    el.parentElement?.querySelector(
+                                        ".dk-color-input",
+                                    ) as HTMLInputElement;
+                                if (colorInput) colorInput.value = val;
+                            }
+                        });
+                    });
+
+                // Select dropdowns
+                controlsEl.querySelectorAll(".dk-select").forEach((select) => {
+                    const el = select as HTMLSelectElement;
+                    el.addEventListener("change", () => {
+                        const type = el.dataset.type!;
+                        const prop = el.dataset.prop!;
+
+                        if (prop === "font-family" && el.value === "custom") {
+                            // Show custom input
+                            const customInput = el.parentElement?.querySelector(
+                                ".dk-custom-font",
+                            ) as HTMLInputElement;
+                            if (customInput) {
+                                customInput.style.display = "";
+                                customInput.focus();
+                            }
+                            return;
+                        }
+
+                        if (prop === "font-family") {
+                            // Hide custom input
+                            const customInput = el.parentElement?.querySelector(
+                                ".dk-custom-font",
+                            ) as HTMLInputElement;
+                            if (customInput) {
+                                customInput.style.display = "none";
+                                customInput.value = "";
+                            }
+                        }
+
+                        setOverride(type, prop, el.value || null);
+                    });
+                });
+
+                // Custom font input
+                controlsEl
+                    .querySelectorAll(".dk-custom-font")
+                    .forEach((input) => {
+                        const el = input as HTMLInputElement;
+                        el.addEventListener("change", () => {
+                            const type = el.dataset.type!;
+                            const prop = el.dataset.prop!;
+                            const val = el.value.trim();
+                            setOverride(type, prop, val || null);
+                        });
+                        el.addEventListener("input", () => {
+                            const type = el.dataset.type!;
+                            const prop = el.dataset.prop!;
+                            const val = el.value.trim();
+                            if (val) {
+                                setOverride(type, prop, val);
+                            }
+                        });
+                    });
+
+                // Reset property buttons
+                controlsEl.querySelectorAll(".dk-reset-prop").forEach((btn) => {
+                    const el = btn as HTMLButtonElement;
+                    el.addEventListener("click", () => {
+                        const type = el.dataset.type!;
+                        const prop = el.dataset.prop!;
+                        setOverride(type, prop, null);
+                    });
+                });
+            }
+
+            // ── Panel open/close ─────────────────────────────────────────
+            function openPanel() {
+                state.open = true;
+                panel.classList.remove("hidden");
+                toggleBtn.classList.add("hidden");
+            }
+
+            function closePanel() {
+                state.open = false;
+                panel.classList.add("hidden");
+                toggleBtn.classList.remove("hidden");
+                if (state.eyedropperActive) {
+                    deactivateEyedropper();
+                }
+            }
+
+            function togglePanel() {
+                if (state.open) {
+                    closePanel();
+                } else {
+                    openPanel();
+                }
+            }
+
+            // ── Eyedropper ──────────────────────────────────────────────
+            function activateEyedropper() {
+                if (state.eyedropperActive) return;
+                state.eyedropperActive = true;
+                document.body.style.cursor = "crosshair";
+                eyedropperOverlay.classList.remove("hidden");
+                eyedropperBtn.classList.add("text-blue-400", "bg-blue-600/20");
+                document.addEventListener("mousemove", onEyedropperMove, true);
+                document.addEventListener("click", onEyedropperClick, true);
+                document.addEventListener("keydown", onEyedropperKey, true);
+            }
+
+            function deactivateEyedropper() {
+                state.eyedropperActive = false;
+                document.body.style.cursor = "";
+                eyedropperOverlay.classList.add("hidden");
+                eyedropperBtn.classList.remove(
+                    "text-blue-400",
+                    "bg-blue-600/20",
+                );
+                document.removeEventListener(
+                    "mousemove",
+                    onEyedropperMove,
+                    true,
+                );
+                document.removeEventListener("click", onEyedropperClick, true);
+                document.removeEventListener("keydown", onEyedropperKey, true);
+                clearHighlights();
+            }
+
+            let highlightedElement: HTMLElement | null = null;
+            const highlightOverlay = document.createElement("div");
+            highlightOverlay.className =
+                "dk-highlight pointer-events-none fixed z-9995 rounded-sm border-2 border-blue-400 bg-blue-400/10 transition-all duration-75";
+            highlightOverlay.style.display = "none";
+            document.body.appendChild(highlightOverlay);
+
+            function clearHighlights() {
+                highlightedElement = null;
+                highlightOverlay.style.display = "none";
+                eyedropperTooltip.textContent = "";
+            }
+
+            function findTargetElement(el: Element): {
+                el: Element;
+                type: string;
+            } | null {
+                // Walk up from the element to find one with data-dk or the body
+                let current: Element | null = el;
+
+                // Don't target DialKit elements
+                while (current) {
+                    if (
+                        current.id === "dk-panel" ||
+                        current.id === "dk-toggle" ||
+                        current.id === "dk-eyedropper-overlay" ||
+                        current.closest("#dk-panel") ||
+                        current.closest("#dk-eyedropper-overlay")
+                    ) {
+                        return null;
+                    }
+
+                    const dkType = (current as HTMLElement).dataset?.dk;
+                    if (dkType && ELEMENT_CONFIGS[dkType]) {
+                        return { el: current, type: dkType };
+                    }
+
+                    current = current.parentElement;
+                }
+
+                // Check if body has data-dk
+                if (
+                    (document.body as HTMLElement).dataset?.dk &&
+                    ELEMENT_CONFIGS[(document.body as HTMLElement).dataset.dk!]
+                ) {
+                    return {
+                        el: document.body,
+                        type: (document.body as HTMLElement).dataset.dk!,
+                    };
+                }
+
+                return null;
+            }
+
+            function onEyedropperMove(e: MouseEvent) {
+                const target = document.elementFromPoint(e.clientX, e.clientY);
+                if (!target) {
+                    clearHighlights();
+                    return;
+                }
+
+                const found = findTargetElement(target);
+                if (!found) {
+                    clearHighlights();
+                    return;
+                }
+
+                highlightedElement = found.el as HTMLElement;
+                const rect = found.el.getBoundingClientRect();
+                highlightOverlay.style.display = "";
+                highlightOverlay.style.left = rect.left + "px";
+                highlightOverlay.style.top = rect.top + "px";
+                highlightOverlay.style.width = rect.width + "px";
+                highlightOverlay.style.height = rect.height + "px";
+
+                eyedropperTooltip.textContent =
+                    ELEMENT_CONFIGS[found.type]?.label || found.type;
+                eyedropperTooltip.style.left = e.clientX + "px";
+                eyedropperTooltip.style.top = e.clientY + "px";
+            }
+
+            function onEyedropperClick(e: MouseEvent) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const target = document.elementFromPoint(e.clientX, e.clientY);
+                if (!target) {
+                    deactivateEyedropper();
+                    return;
+                }
+
+                const found = findTargetElement(target);
+                if (found) {
+                    selectType(found.type);
+                }
+
+                deactivateEyedropper();
+            }
+
+            function onEyedropperKey(e: KeyboardEvent) {
+                if (e.key === "Escape") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    deactivateEyedropper();
+                }
+            }
+
+            function toggleEyedropper() {
+                if (state.eyedropperActive) {
+                    deactivateEyedropper();
+                } else {
+                    if (!state.open) openPanel();
+                    activateEyedropper();
+                }
+            }
+
+            // ── Reset all ────────────────────────────────────────────────
+            function resetAll() {
+                state.overrides = {};
+                saveOverrides(state.overrides);
+                applyAllOverrides();
+                renderControls();
+                renderElementChips();
+            }
+
+            // ── Keyboard shortcuts ───────────────────────────────────────
+            function onKeyDown(e: KeyboardEvent) {
+                // Ctrl+Shift+D → toggle panel
+                if (e.ctrlKey && e.shiftKey && e.key === "D") {
+                    e.preventDefault();
+                    togglePanel();
+                    return;
+                }
+
+                // Ctrl+Shift+E → toggle eyedropper
+                if (e.ctrlKey && e.shiftKey && e.key === "E") {
+                    e.preventDefault();
+                    toggleEyedropper();
+                    return;
+                }
+
+                // Escape closes eyedropper if active
+                if (e.key === "Escape" && state.eyedropperActive) {
+                    e.preventDefault();
+                    deactivateEyedropper();
+                    return;
+                }
+            }
+
+            // ── Event bindings ───────────────────────────────────────────
+            toggleBtn.addEventListener("click", togglePanel);
+            closeBtn.addEventListener("click", closePanel);
+            eyedropperBtn.addEventListener("click", toggleEyedropper);
+            resetBtn.addEventListener("click", resetAll);
+            document.addEventListener("keydown", onKeyDown);
+
+            // ── Initialize ───────────────────────────────────────────────
             renderElementChips();
             renderControls();
-            updateTargetDisplay();
-          }
-
-          function updateTargetDisplay() {
-            if (state.selectedType && ELEMENT_CONFIGS[state.selectedType]) {
-              targetName.textContent =
-                ELEMENT_CONFIGS[state.selectedType].label;
-              targetName.className = "text-xs font-medium text-blue-300";
-              targetSection.classList.add(
-                "border-blue-600/30",
-                "bg-blue-600/5",
-              );
-            } else {
-              targetName.textContent = "None";
-              targetName.className = "text-xs font-medium text-neutral-500";
-              targetSection.classList.remove(
-                "border-blue-600/30",
-                "bg-blue-600/5",
-              );
-            }
-          }
-
-          // ── Get/set override value ──────────────────────────────────
-          function getOverride(type: string, prop: string): string | null {
-            return state.overrides[type]?.[prop] ?? null;
-          }
-
-          function setOverride(type: string, prop: string, value: string | null) {
-            if (!state.overrides[type]) {
-              state.overrides[type] = {};
-            }
-            if (value === "" || value === null) {
-              delete state.overrides[type]![prop];
-              if (Object.keys(state.overrides[type]!).length === 0) {
-                delete state.overrides[type];
-              }
-            } else {
-              state.overrides[type]![prop] = value;
-            }
-            saveOverrides(state.overrides);
             applyAllOverrides();
-            renderControls();
-          }
+            updateTargetDisplay();
 
-          // ── Apply all overrides as CSS ──────────────────────────────
-          function applyAllOverrides() {
-            const rules: string[] = [];
-
-            for (const [type, props] of Object.entries(state.overrides)) {
-              const declarations: string[] = [];
-              for (const [prop, value] of Object.entries(props)) {
-                if (value === null) continue;
-
-                // Map our logical prop names to CSS
-                const cssProp = prop; // they match directly
-                declarations.push(`${cssProp}: ${value} !important;`);
-              }
-              if (declarations.length > 0) {
-                const selector =
-                  type === "body"
-                    ? "body"
-                    : `[data-dk="${type}"]`;
-                rules.push(`${selector} { ${declarations.join(" ")} }`);
-              }
-            }
-
-            overrideStyles.textContent = rules.join("\n");
-          }
-
-          // ── Render controls for selected type ───────────────────────
-          function renderControls() {
-            if (
-              !state.selectedType ||
-              !ELEMENT_CONFIGS[state.selectedType]
-            ) {
-              controlsEl.innerHTML =
-                '<p class="text-[11px] text-neutral-600">Select an element type to see controls.</p>';
-              return;
-            }
-
-            const config = ELEMENT_CONFIGS[state.selectedType];
-            const type = state.selectedType;
-            let html = '<div class="flex flex-col gap-3">';
-
-            for (const prop of config.controls) {
-              const currentValue = getOverride(type, prop);
-              const label = CONTROL_LABELS[prop] || prop;
-
-              html +=
-                '<div class="flex flex-col gap-1"><span class="text-[10px] uppercase tracking-wider text-neutral-500">' +
-                label +
-                "</span>";
-
-              if (prop === "background-color" || prop === "color") {
-                // Color picker
-                html +=
-                  '<div class="flex items-center gap-2"><input type="color" class="dk-control dk-color-input h-7 w-8 cursor-pointer rounded border border-neutral-700 bg-transparent p-0" value="' +
-                  (currentValue || "#000000") +
-                  '" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '" />' +
-                  '<input type="text" class="dk-control dk-text-input flex-1 rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200 font-mono" value="' +
-                  (currentValue || "") +
-                  '" placeholder="Default" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '" /></div>';
-              } else if (prop === "font-family") {
-                // Font family select + custom input
-                const isCustom =
-                  currentValue &&
-                  !FONT_OPTIONS.slice(0, -1).some(
-                    (o) => o.value === currentValue,
-                  );
-                html +=
-                  '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '">';
-                for (const opt of FONT_OPTIONS) {
-                  const selected =
-                    opt.value === "custom"
-                      ? isCustom
-                      : currentValue === opt.value;
-                  html +=
-                    '<option value="' +
-                    opt.value +
-                    '"' +
-                    (selected ? " selected" : "") +
-                    ">" +
-                    opt.label +
-                    "</option>";
-                }
-                html += "</select>";
-                // Custom font input
-                html +=
-                  '<input type="text" class="dk-control dk-custom-font rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200 font-mono" value="' +
-                  (isCustom ? (currentValue || "") : "") +
-                  '" placeholder="Enter font name…" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '" style="' +
-                  (isCustom ? "" : "display:none") +
-                  '" />';
-              } else if (prop === "text-transform") {
-                html +=
-                  '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '">';
-                for (const opt of TEXT_TRANSFORM_OPTIONS) {
-                  html +=
-                    '<option value="' +
-                    opt.value +
-                    '"' +
-                    (currentValue === opt.value || (!currentValue && opt.value === "")
-                      ? " selected"
-                      : "") +
-                    ">" +
-                    opt.label +
-                    "</option>";
-                }
-                html += "</select>";
-              } else if (prop === "font-weight") {
-                html +=
-                  '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '">';
-                for (const opt of FONT_WEIGHT_OPTIONS) {
-                  html +=
-                    '<option value="' +
-                    opt.value +
-                    '"' +
-                    (currentValue === opt.value || (!currentValue && opt.value === "")
-                      ? " selected"
-                      : "") +
-                    ">" +
-                    opt.label +
-                    "</option>";
-                }
-                html += "</select>";
-              } else if (prop === "font-size") {
-                html +=
-                  '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '">';
-                for (const opt of FONT_SIZE_OPTIONS) {
-                  html +=
-                    '<option value="' +
-                    opt.value +
-                    '"' +
-                    (currentValue === opt.value || (!currentValue && opt.value === "")
-                      ? " selected"
-                      : "") +
-                    ">" +
-                    opt.label +
-                    "</option>";
-                }
-                html += "</select>";
-              } else if (prop === "letter-spacing") {
-                html +=
-                  '<select class="dk-control dk-select rounded border border-neutral-700 bg-neutral-800 px-2 py-1 text-[11px] text-neutral-200" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '">';
-                for (const opt of LETTER_SPACING_OPTIONS) {
-                  html +=
-                    '<option value="' +
-                    opt.value +
-                    '"' +
-                    (currentValue === opt.value || (!currentValue && opt.value === "")
-                      ? " selected"
-                      : "") +
-                    ">" +
-                    opt.label +
-                    "</option>";
-                }
-                html += "</select>";
-              }
-
-              // Reset button for this property
-              if (currentValue) {
-                html +=
-                  '<button class="dk-reset-prop mt-0.5 self-end text-[9px] uppercase tracking-wider text-neutral-600 transition-colors hover:text-red-400" data-type="' +
-                  type +
-                  '" data-prop="' +
-                  prop +
-                  '">Reset</button>';
-              }
-
-              html += "</div>";
-            }
-
-            html += "</div>";
-
-            // Copy Values button — shown when overrides exist for this type
-            const typeOverrides = state.overrides[type];
-            if (typeOverrides && Object.keys(typeOverrides).length > 0) {
-              html +=
-                '<div class="mt-2 border-t border-neutral-800 pt-2">' +
-                '<button class="dk-copy-values-btn flex w-full items-center justify-center gap-1.5 rounded bg-neutral-800 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-neutral-400 transition-colors hover:bg-blue-900/40 hover:text-blue-300">' +
-                '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
-                'Copy Values' +
-                '</button>' +
-                '</div>';
-            }
-
-            controlsEl.innerHTML = html;
-
-            // Bind control events
-            bindControlEvents();
-          }
-
-          function bindControlEvents() {
-            // Color inputs
-            controlsEl
-              .querySelectorAll(".dk-color-input")
-              .forEach((input) => {
-                const el = input as HTMLInputElement;
-                el.addEventListener("input", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-                  setOverride(type, prop, el.value);
-                  // Sync text input
-                  const textInput = el.parentElement?.querySelector(
-                    ".dk-text-input",
-                  ) as HTMLInputElement;
-                  if (textInput) textInput.value = el.value;
-                });
-              });
-
-            // Text inputs (for color hex)
-            controlsEl
-              .querySelectorAll(".dk-text-input")
-              .forEach((input) => {
-                const el = input as HTMLInputElement;
-                el.addEventListener("change", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-                  const val = el.value.trim();
-                  if (val === "") {
-                    setOverride(type, prop, null);
-                    // Reset color input too
-                    const colorInput = el.parentElement?.querySelector(
-                      ".dk-color-input",
-                    ) as HTMLInputElement;
-                    if (colorInput) colorInput.value = "#000000";
-                  } else {
-                    setOverride(type, prop, val);
-                    // Sync color input
-                    const colorInput = el.parentElement?.querySelector(
-                      ".dk-color-input",
-                    ) as HTMLInputElement;
-                    if (colorInput && /^#[0-9a-fA-F]{6}$/.test(val)) {
-                      colorInput.value = val;
-                    }
-                  }
-                });
-                // Live update on input too
-                el.addEventListener("input", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-                  const val = el.value.trim();
-                  if (val === "") {
-                    setOverride(type, prop, null);
-                  } else if (/^#[0-9a-fA-F]{3,6}$/.test(val)) {
-                    setOverride(type, prop, val);
-                    const colorInput = el.parentElement?.querySelector(
-                      ".dk-color-input",
-                    ) as HTMLInputElement;
-                    if (colorInput) colorInput.value = val;
-                  }
-                });
-              });
-
-            // Select dropdowns
-            controlsEl
-              .querySelectorAll(".dk-select")
-              .forEach((select) => {
-                const el = select as HTMLSelectElement;
-                el.addEventListener("change", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-
-                  if (prop === "font-family" && el.value === "custom") {
-                    // Show custom input
-                    const customInput = el.parentElement?.querySelector(
-                      ".dk-custom-font",
-                    ) as HTMLInputElement;
-                    if (customInput) {
-                      customInput.style.display = "";
-                      customInput.focus();
-                    }
-                    return;
-                  }
-
-                  if (prop === "font-family") {
-                    // Hide custom input
-                    const customInput = el.parentElement?.querySelector(
-                      ".dk-custom-font",
-                    ) as HTMLInputElement;
-                    if (customInput) {
-                      customInput.style.display = "none";
-                      customInput.value = "";
-                    }
-                  }
-
-                  setOverride(type, prop, el.value || null);
-                });
-              });
-
-            // Custom font input
-            controlsEl
-              .querySelectorAll(".dk-custom-font")
-              .forEach((input) => {
-                const el = input as HTMLInputElement;
-                el.addEventListener("change", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-                  const val = el.value.trim();
-                  setOverride(type, prop, val || null);
-                });
-                el.addEventListener("input", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-                  const val = el.value.trim();
-                  if (val) {
-                    setOverride(type, prop, val);
-                  }
-                });
-              });
-
-            // Reset property buttons
-            controlsEl
-              .querySelectorAll(".dk-reset-prop")
-              .forEach((btn) => {
-                const el = btn as HTMLButtonElement;
-                el.addEventListener("click", () => {
-                  const type = el.dataset.type!;
-                  const prop = el.dataset.prop!;
-                  setOverride(type, prop, null);
-                });
-              });
-
-            // Copy Values button
-            controlsEl
-              .querySelectorAll(".dk-copy-values-btn")
-              .forEach((btn) => {
-                const el = btn as HTMLButtonElement;
-                el.addEventListener("click", async () => {
-                  const type = state.selectedType!;
-                  const config = ELEMENT_CONFIGS[type];
-                  const overrides = state.overrides[type] || {};
-
-                  // Build formatted output
-                  const lines: string[] = [];
-                  lines.push(`/* ${config.label} */`);
-                  lines.push(`[data-dk="${type}"] {`);
-                  for (const [prop, value] of Object.entries(overrides)) {
-                    if (value) {
-                      const label = CONTROL_LABELS[prop] || prop;
-                      lines.push(`  /* ${label} */`);
-                      lines.push(`  ${prop}: ${value};`);
-                    }
-                  }
-                  lines.push("}");
-                  const text = lines.join("\n");
-
-                  try {
-                    await navigator.clipboard.writeText(text);
-                  } catch {
-                    const ta = document.createElement("textarea");
-                    ta.value = text;
-                    ta.style.position = "fixed";
-                    ta.style.opacity = "0";
-                    document.body.appendChild(ta);
-                    ta.select();
-                    document.execCommand("copy");
-                    document.body.removeChild(ta);
-                  }
-
-                  // Flash feedback
-                  const originalHTML = el.innerHTML;
-                  el.innerHTML =
-                    '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Copied!';
-                  el.classList.add("text-green-400", "bg-green-900/40");
-                  el.classList.remove(
-                    "hover:bg-blue-900/40",
-                    "hover:text-blue-300",
-                  );
-                  setTimeout(() => {
-                    el.innerHTML = originalHTML;
-                    el.classList.remove("text-green-400", "bg-green-900/40");
-                    el.classList.add(
-                      "hover:bg-blue-900/40",
-                      "hover:text-blue-300",
-                    );
-                  }, 1500);
-                });
-              });
-          }
-
-          // ── Panel open/close ─────────────────────────────────────────
-          function openPanel() {
-            state.open = true;
-            panel.classList.remove("hidden");
-            toggleBtn.classList.add("hidden");
-          }
-
-          function closePanel() {
-            state.open = false;
+            // Start with panel closed
             panel.classList.add("hidden");
             toggleBtn.classList.remove("hidden");
-            if (state.eyedropperActive) {
-              deactivateEyedropper();
-            }
-          }
-
-          function togglePanel() {
-            if (state.open) {
-              closePanel();
-            } else {
-              openPanel();
-            }
-          }
-
-          // ── Eyedropper ──────────────────────────────────────────────
-          function activateEyedropper() {
-            if (state.eyedropperActive) return;
-            state.eyedropperActive = true;
-            document.body.style.cursor = "crosshair";
-            eyedropperOverlay.classList.remove("hidden");
-            eyedropperBtn.classList.add("text-blue-400", "bg-blue-600/20");
-            document.addEventListener("mousemove", onEyedropperMove, true);
-            document.addEventListener("click", onEyedropperClick, true);
-            document.addEventListener("keydown", onEyedropperKey, true);
-          }
-
-          function deactivateEyedropper() {
-            state.eyedropperActive = false;
-            document.body.style.cursor = "";
-            eyedropperOverlay.classList.add("hidden");
-            eyedropperBtn.classList.remove("text-blue-400", "bg-blue-600/20");
-            document.removeEventListener("mousemove", onEyedropperMove, true);
-            document.removeEventListener("click", onEyedropperClick, true);
-            document.removeEventListener("keydown", onEyedropperKey, true);
-            clearHighlights();
-          }
-
-          let highlightedElement: HTMLElement | null = null;
-          const highlightOverlay = document.createElement("div");
-          highlightOverlay.className =
-                      "dk-highlight pointer-events-none fixed z-9995 rounded-sm border-2 border-blue-400 bg-blue-400/10 transition-all duration-75";
-          highlightOverlay.style.display = "none";
-          document.body.appendChild(highlightOverlay);
-
-          function clearHighlights() {
-            highlightedElement = null;
-            highlightOverlay.style.display = "none";
-            eyedropperTooltip.textContent = "";
-          }
-
-          function findTargetElement(el: Element): {
-            el: Element;
-            type: string;
-          } | null {
-            // Walk up from the element to find one with data-dk or the body
-            let current: Element | null = el;
-
-            // Don't target DialKit elements
-            while (current) {
-              if (
-                current.id === "dk-panel" ||
-                current.id === "dk-toggle" ||
-                current.id === "dk-eyedropper-overlay" ||
-                current.closest("#dk-panel") ||
-                current.closest("#dk-eyedropper-overlay")
-              ) {
-                return null;
-              }
-
-              const dkType = (current as HTMLElement).dataset?.dk;
-              if (dkType && ELEMENT_CONFIGS[dkType]) {
-                return { el: current, type: dkType };
-              }
-
-              current = current.parentElement;
-            }
-
-            // Check if body has data-dk
-            if (
-              (document.body as HTMLElement).dataset?.dk &&
-              ELEMENT_CONFIGS[(document.body as HTMLElement).dataset.dk!]
-            ) {
-              return {
-                el: document.body,
-                type: (document.body as HTMLElement).dataset.dk!,
-              };
-            }
-
-            return null;
-          }
-
-          function onEyedropperMove(e: MouseEvent) {
-            const target = document.elementFromPoint(e.clientX, e.clientY);
-            if (!target) {
-              clearHighlights();
-              return;
-            }
-
-            const found = findTargetElement(target);
-            if (!found) {
-              clearHighlights();
-              return;
-            }
-
-            highlightedElement = found.el as HTMLElement;
-            const rect = found.el.getBoundingClientRect();
-            highlightOverlay.style.display = "";
-            highlightOverlay.style.left = rect.left + "px";
-            highlightOverlay.style.top = rect.top + "px";
-            highlightOverlay.style.width = rect.width + "px";
-            highlightOverlay.style.height = rect.height + "px";
-
-            eyedropperTooltip.textContent =
-              ELEMENT_CONFIGS[found.type]?.label || found.type;
-            eyedropperTooltip.style.left = e.clientX + "px";
-            eyedropperTooltip.style.top = e.clientY + "px";
-          }
-
-          function onEyedropperClick(e: MouseEvent) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const target = document.elementFromPoint(e.clientX, e.clientY);
-            if (!target) {
-              deactivateEyedropper();
-              return;
-            }
-
-            const found = findTargetElement(target);
-            if (found) {
-              selectType(found.type);
-            }
-
-            deactivateEyedropper();
-          }
-
-          function onEyedropperKey(e: KeyboardEvent) {
-            if (e.key === "Escape") {
-              e.preventDefault();
-              e.stopPropagation();
-              deactivateEyedropper();
-            }
-          }
-
-          function toggleEyedropper() {
-            if (state.eyedropperActive) {
-              deactivateEyedropper();
-            } else {
-              if (!state.open) openPanel();
-              activateEyedropper();
-            }
-          }
-
-          // ── Reset all ────────────────────────────────────────────────
-          function resetAll() {
-            state.overrides = {};
-            saveOverrides(state.overrides);
-            applyAllOverrides();
-            renderControls();
-            renderElementChips();
-          }
-
-          // ── Keyboard shortcuts ───────────────────────────────────────
-          function onKeyDown(e: KeyboardEvent) {
-            // Ctrl+Shift+D → toggle panel
-            if (e.ctrlKey && e.shiftKey && e.key === "D") {
-              e.preventDefault();
-              togglePanel();
-              return;
-            }
-
-            // Ctrl+Shift+E → toggle eyedropper
-            if (e.ctrlKey && e.shiftKey && e.key === "E") {
-              e.preventDefault();
-              toggleEyedropper();
-              return;
-            }
-
-            // Escape closes eyedropper if active
-            if (e.key === "Escape" && state.eyedropperActive) {
-              e.preventDefault();
-              deactivateEyedropper();
-              return;
-            }
-          }
-
-          // ── Event bindings ───────────────────────────────────────────
-          toggleBtn.addEventListener("click", togglePanel);
-          closeBtn.addEventListener("click", closePanel);
-          eyedropperBtn.addEventListener("click", toggleEyedropper);
-          chooseElementBtn.addEventListener("click", toggleEyedropper);
-          resetBtn.addEventListener("click", resetAll);
-          document.addEventListener("keydown", onKeyDown);
-
-          // ── Initialize ───────────────────────────────────────────────
-          renderElementChips();
-          renderControls();
-          applyAllOverrides();
-          updateTargetDisplay();
-
-          // Start with panel closed
-          panel.classList.add("hidden");
-          toggleBtn.classList.remove("hidden");
         })();
-      </script>
+    </script>
 
-      <style is:global>
+    <style is:global>
         /* DialKit panel scrollbar */
         #dk-controls::-webkit-scrollbar {
-          width: 4px;
+            width: 4px;
         }
         #dk-controls::-webkit-scrollbar-track {
-          background: transparent;
+            background: transparent;
         }
         #dk-controls::-webkit-scrollbar-thumb {
-          background: #525252;
-          border-radius: 2px;
+            background: #525252;
+            border-radius: 2px;
         }
 
         /* Color input styling */
         .dk-color-input::-webkit-color-swatch-wrapper {
-          padding: 0;
+            padding: 0;
         }
         .dk-color-input::-webkit-color-swatch {
-          border: none;
-          border-radius: 3px;
+            border: none;
+            border-radius: 3px;
         }
 
         /* DialKit high z-index isolation */
@@ -1010,24 +1006,25 @@
         #dk-panel,
         #dk-eyedropper-overlay,
         .dk-highlight {
-          font-family: system-ui, -apple-system, sans-serif;
+            font-family:
+                system-ui,
+                -apple-system,
+                sans-serif;
         }
 
         /* Transition for panel */
         #dk-panel {
-          animation: dk-slide-up 0.15s ease-out;
+            animation: dk-slide-up 0.15s ease-out;
         }
         @keyframes dk-slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-      </style>
-    </>
-  )
-}
+    </style>
+</>
