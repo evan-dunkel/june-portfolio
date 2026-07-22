@@ -96,7 +96,7 @@ content:
               - name: alt
                 label: Alt Text
                 type: string
-                description: Description for screen readers and search engines (Short and descriptive is best)
+                description: Short description for screen readers and search engines
 
               - name: caption
                 label: Caption
