@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* ── Brand font for the name ─────────────────────────────────────── */
+@font-face {
+  font-family: "June";
+  src:
+    url("/June-Regular.woff2") format("woff2"),
+    url("/June-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Name in the header renders in the June brand face.
+   DialKit's !important overrides still win over this rule. */
+[data-dk="name"] {
+  font-family: "June", system-ui, -apple-system, sans-serif;
+}
+
 @theme {
   --color-background: #fafaf9;
   --color-foreground: #171717;

@@ -139,8 +139,11 @@
         </div>
     </div>
 
-    <!-- Override styles injected by DialKit -->
-    <style id="dk-override-styles"></style>
+    <!-- Override styles injected by DialKit.
+         Marked is:inline so Astro emits it verbatim; otherwise the empty
+         <style> tag is hoisted away at build time and the element is null
+         at runtime, which breaks every override. -->
+    <style id="dk-override-styles" is:inline></style>
 
     <!-- Eyedropper overlay (shown during pick mode) -->
     <div
@@ -223,6 +226,10 @@
 
             const FONT_OPTIONS = [
                 { value: "", label: "Default" },
+                {
+                    value: "'June', system-ui, sans-serif",
+                    label: "June",
+                },
                 {
                     value: "system-ui, -apple-system, sans-serif",
                     label: "System UI",
@@ -330,9 +337,14 @@
             const targetHint = document.getElementById("dk-target-hint")!;
             const targetSection = document.getElementById("dk-target-section")!;
             const controlsEl = document.getElementById("dk-controls")!;
-            const overrideStyles = document.getElementById(
+            let overrideStyles = document.getElementById(
                 "dk-override-styles",
-            )! as HTMLStyleElement;
+            ) as HTMLStyleElement | null;
+            if (!overrideStyles) {
+                overrideStyles = document.createElement("style");
+                overrideStyles.id = "dk-override-styles";
+                document.head.appendChild(overrideStyles);
+            }
             const resetBtn = document.getElementById("dk-reset-btn")!;
             const elementChips = document.getElementById("dk-element-chips")!;
             const eyedropperOverlay = document.getElementById(
