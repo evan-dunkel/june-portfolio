@@ -20,8 +20,12 @@
 @theme {
   --color-background: #fafaf9;
   --color-foreground: #171717;
-  --color-muted: #737373;
+  --color-muted: #6b6b6b;
   --spacing-gutter: 1.5rem;
+
+  /* Motion easing — exposed as `ease-spring` / `ease-out-soft` utilities */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Justified gallery grid (pure CSS flexbox, no JS required) ────── */
@@ -72,7 +76,7 @@
   align-items: center;
   gap: 0.375rem;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   background: none;
   border: none;
@@ -94,6 +98,14 @@
   transform: scale(0.97);
 }
 
+/* PhotoSwipe blanket-disables selection on `.pswp__container`, which inherits
+   down into the caption. Re-enable it for the email so it can be highlighted.
+   The -webkit- prefix is required — Safari ignores the unprefixed property. */
+.pswp-caption-email-text {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 /* Icon container */
 .pswp-caption-email-icon {
   position: relative;
@@ -113,14 +125,14 @@
 .pswp-copy-icon {
   opacity: 1;
   transform: scale(1);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s var(--ease-out-soft);
 }
 
 /* Check icon */
 .pswp-check-icon {
   opacity: 0;
   transform: scale(0) rotate(-90deg);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s var(--ease-spring);
 }
 
 /* Copied state */

@@ -1,18 +1,10 @@
 ---
 import { Image, getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
 
-interface Work {
-    src: string;
-    alt: string;
-    caption?: string;
-    poster?: string;
-}
-
-interface Section {
-    title: string;
-    works: Work[];
-}
+type Section = CollectionEntry<"portfolio">["data"]["sections"][number];
+type Work = Section["works"][number];
 
 interface Props {
     sections: Section[];
@@ -27,7 +19,13 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 function resolveImage(path: string): ImageMetadata | undefined {
-    return imageModules[path]?.default;
+    const img = imageModules[path]?.default;
+    if (!img) {
+        // Surface broken CMS entries in the build/deploy log instead of
+        // silently dropping the image.
+        console.warn(`[MasonryGrid] Could not resolve image src: "${path}"`);
+    }
+    return img;
 }
 
 const FIRST_ROW_COUNT = 4;

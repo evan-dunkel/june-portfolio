@@ -15,7 +15,6 @@ const workSchema = z.object({
   src: z.string().min(1, 'src is required'),
   alt: z.string().min(1, 'alt text is required'),
   caption: z.string().optional().default(''),
-  poster: z.string().optional(),
 });
 
 const sectionSchema = z.object({
