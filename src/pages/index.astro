@@ -9,6 +9,7 @@ const portfolioEntries = await getCollection("portfolio");
 const settings = settingsEntries[0]?.data;
 const portfolio = portfolioEntries[0]?.data;
 const email = settings?.email ?? "";
+const about = settings?.about?.trim() ?? "";
 ---
 
 <Layout
@@ -25,6 +26,19 @@ const email = settings?.email ?? "";
             )
         }
     </main>
+
+    {
+        about && (
+            <footer class="mx-auto max-w-[1600px] px-gutter pb-24">
+                <p
+                    class="max-w-prose text-sm leading-relaxed text-muted"
+                    data-dk="about"
+                >
+                    {about}
+                </p>
+            </footer>
+        )
+    }
 </Layout>
 
 <script src="../scripts/lightbox.ts"></script>

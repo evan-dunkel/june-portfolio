@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# June Portfolio
+
+A single-page portfolio site for illustrator June Lee. Static, image-first, with a
+justified gallery and a PhotoSwipe lightbox.
+
+## Stack
+
+- [Astro](https://astro.build) 7 (static output)
+- [Tailwind CSS](https://tailwindcss.com) v4 (via `@tailwindcss/vite`)
+- [PhotoSwipe](https://photoswipe.com) for the lightbox
+- Content collections with Zod validation (`src/content.config.ts`)
+- Images optimized at build time with `sharp`
+
+## Develop
+
+Uses [pnpm](https://pnpm.io).
 
 ```sh
-pnpm create astro@latest -- --template minimal
+pnpm install
+pnpm dev      # local dev server
+pnpm build    # static build to dist/
+pnpm preview  # preview the production build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Editing content
 
-## 🚀 Project Structure
+Content lives in YAML and is edited through [Pages CMS](https://pagescms.org) (see
+`.pages.yml`):
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Settings** (`src/content/settings/settings.yml`) — name, email, tagline, and an
+  optional About blurb (leave empty to hide the About section).
+- **Portfolio** (`src/content/portfolio/works.yml`) — sections, each holding works
+  with an image (`src`), alt text, and an optional caption. Images are uploaded into
+  `src/assets/works/`.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Deploy
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site deploys to Cloudflare Pages as static assets. `pnpm build` produces `dist/`,
+which is served directly (see `wrangler` config). A "Deploy to Cloudflare" action is
+also wired up in `.pages.yml` for editors.

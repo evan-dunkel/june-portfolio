@@ -20,18 +20,12 @@ importers:
       photoswipe-dynamic-caption-plugin:
         specifier: ^1.2.7
         version: 1.2.7
-      photoswipe-video-plugin:
-        specifier: ^1.0.2
-        version: 1.0.2
       sharp:
         specifier: ^0.35.3
         version: 0.35.3
       tailwindcss:
         specifier: 4.3.3
         version: 4.3.3
-      zod:
-        specifier: ^4.4.3
-        version: 4.4.3
 
 packages:
 
@@ -1242,9 +1236,6 @@ packages:
 
   photoswipe-dynamic-caption-plugin@1.2.7:
     resolution: {integrity: sha512-5XXdXLf2381nwe7KqQvcyStiUBi9TitYXppUQTrzPwYAi4lZsmWNnNKMclM7I4QGlX6fXo42v3bgb6rlK9pY1Q==}
-
-  photoswipe-video-plugin@1.0.2:
-    resolution: {integrity: sha512-skNHaalLU7rptZ3zq4XfS5hPqSDD65ctvpf2X8buvC8BpOt6XKSIgRkLzTwgQOUm9yQ8kQ4mMget7CIqGcqtDg==}
 
   photoswipe@5.4.4:
     resolution: {integrity: sha512-WNFHoKrkZNnvFFhbHL93WDkW3ifwVOXSW3w1UuZZelSmgXpIGiZSNlZJq37rR8YejqME2rHs9EhH9ZvlvFH2NA==}
@@ -2648,8 +2639,6 @@ snapshots:
       entities: 6.0.1
 
   photoswipe-dynamic-caption-plugin@1.2.7: {}
-
-  photoswipe-video-plugin@1.0.2: {}
 
   photoswipe@5.4.4: {}
 
