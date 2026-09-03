@@ -1,9 +1,8 @@
 sections:
   - title: Recent
     works:
-      - src: /src/assets/works/Screenshot 2026-07-19 at 3.03.07 PM-1.png
-        alt: Joyful Forfeit
-        caption: Description about the work
+      - src: /src/assets/works/February 30_Lee.jpg
+        caption: February 30th // 2025
   - title: Editorials
   - title: Another section
     works:
