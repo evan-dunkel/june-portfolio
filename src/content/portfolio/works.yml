@@ -80,4 +80,6 @@ sections:
       - src: /src/assets/works/bb70cc_394db14f459140c6bdad4f1090e92e84~mv2.gif
         alt: Pose // 2024
         caption: Pose // 2024
-  - {}
+  - title: Editorial
+    works:
+      - {}
