@@ -57,7 +57,7 @@ sections:
       - src: /src/assets/works/music/bb70cc_fa71fb3a06ae494f90467ef4f0ff5e9b~mv2.jpg
         alt: The Infiltrator // 2025
         caption: The Infiltrator // 2025
-  - title: Another section
+  - title: Animation
     works:
       - src: /src/assets/works/animations/animaljungle.gif
         alt: Jungle Party // 2024
