@@ -2,7 +2,35 @@ sections:
   - title: Recent
     works:
       - src: /src/assets/works/February 30_Lee.jpg
+        alt: February 30th // 2025
         caption: February 30th // 2025
+      - src: /src/assets/works/IHateLiars_Lee.jpg
+        alt: I Hate Liars // 2025
+        caption: I Hate Liars // 2025
+      - src: /src/assets/works/InOurBlood_Lee.jpg
+        alt: In Our Blood // 2025
+        caption: In Our Blood // 2025
+      - src: /src/assets/works/jester.png
+        alt: This is you and this is me // 2026
+        caption: This is you and this is me // 2025
+      - src: /src/assets/works/may day2.png
+        alt: Let's go bowling // 2026
+        caption: Let's go bowling // 2026
+      - src: /src/assets/works/Oops.png
+        alt: What would you do without me // 2026
+        caption: What would you do without me // 2026
+      - src: /src/assets/works/silentNight.png
+        alt: Silent Night // 2025
+        caption: Silent Night // 2025
+      - src: /src/assets/works/The Great Escape.png
+        alt: The Great Escape // 2026
+        caption: The Great Escape // 2026
+      - src: /src/assets/works/True Love.png
+        alt: True Love // 2026
+        caption: True Love // 2026
+      - src: /src/assets/works/WhenYou'reReady_Lee.jpg
+        alt: When You're Ready // 2025
+        caption: When You're Ready // 2025
   - title: Editorials
   - title: Another section
     works:
