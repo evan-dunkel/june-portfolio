@@ -31,7 +31,32 @@ sections:
       - src: /src/assets/works/WhenYou'reReady_Lee.jpg
         alt: When You're Ready // 2025
         caption: When You're Ready // 2025
-  - title: Editorials
+  - title: Music
+    works:
+      - src: /src/assets/works/music/bb70cc_3c7092ef42f84b9c9c21bf9b3de101b8~mv2.jpg
+        alt: Land and Sky // 2023
+        caption: Land and Sky // 2023
+      - src: /src/assets/works/music/bb70cc_8f55c6a1ea0f47acb1fd903578a05b5c~mv2.jpg
+        alt: Blood Moon // 2024
+        caption: Blood Moon // 2024
+      - src: /src/assets/works/music/bb70cc_aa4ed1578d934e4387c69bed50cdf92b~mv2.jpg
+        alt: You Won't Get What You Want // 2024
+        caption: You Won't Get What You Want // 2024
+      - src: /src/assets/works/music/bb70cc_b408d2700d9c4ffabd66a443b1e3b617~mv2.jpg
+        alt: Dreamer // 2021
+        caption: Dreamer // 2021
+      - src: /src/assets/works/music/bb70cc_be5fc44787544834a1ef0fa8b1ffb950~mv2.jpg
+        alt: Mayflowers // 2024
+        caption: Mayflowers // 2024
+      - src: /src/assets/works/music/bb70cc_cd46172e7c6540f19ecbf71fc2812e07~mv2.jpg
+        alt: Glass Animals Conceptual Poster // 2025
+        caption: Glass Animals Conceptual Poster // 2025
+      - src: /src/assets/works/music/bb70cc_f240610825cd4f90a772316e8206f16c~mv2.jpg
+        alt: Glass Animals Conceptual Poster // 2022
+        caption: Glass Animals Conceptual Poster // 2022
+      - src: /src/assets/works/music/bb70cc_fa71fb3a06ae494f90467ef4f0ff5e9b~mv2.jpg
+        alt: The Infiltrator // 2025
+        caption: The Infiltrator // 2025
   - title: Another section
     works:
       - src: /src/assets/works/animations/animaljungle.gif
