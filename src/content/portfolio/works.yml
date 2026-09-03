@@ -82,4 +82,8 @@ sections:
         caption: Pose // 2024
   - title: Editorial
     works:
-      - {}
+      - src: /src/assets/works/editorial/bb70cc_2385c0f1b8e04822a3caabcfcf218757~mv2.jpg
+        alt: Behind the Castle // 2023
+        caption: Behind the Castle // 2023
+      - src: /src/assets/works/editorial/bb70cc_39e99ae2dd6d45498c1b368a3d5823be~mv2.jpg
+        alt: To Grape Island
