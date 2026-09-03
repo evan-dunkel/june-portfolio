@@ -34,6 +34,18 @@ sections:
   - title: Editorials
   - title: Another section
     works:
-      - src: /src/assets/works/jleeillus.png
-        alt: Illustration of June Lee
-        caption: A caption goes here lol.
+      - src: /src/assets/works/animations/animaljungle.gif
+        alt: Jungle Party // 2024
+        caption: Jungle Party // 2024
+      - src: /src/assets/works/animations/Dance_v002.gif
+        alt: Symbiotic // 2025
+        caption: Symbiotic // 2025
+      - src: /src/assets/works/animations/June_Gif.gif
+        alt: Life and Death // 2022
+        caption: Life and Death // 2022
+      - src: /src/assets/works/animations/P5_HeadRotation_June.gif
+        alt: Head Rotation // 2021
+        caption: Head Rotation // 2021
+      - src: /src/assets/works/animations/TofuFinal_Color.gif
+        alt: Tofu Rolling // 2025
+        caption: Tofu Rolling // 2025
