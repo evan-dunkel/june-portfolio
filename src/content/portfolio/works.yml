@@ -57,6 +57,9 @@ sections:
       - src: /src/assets/works/music/bb70cc_fa71fb3a06ae494f90467ef4f0ff5e9b~mv2.jpg
         alt: The Infiltrator // 2025
         caption: The Infiltrator // 2025
+      - src: /src/assets/works/editorial/bb70cc_9a71e41613c640bf89925b101815f68a~mv2.jpg
+        alt: Clear Skies // 2023
+        caption: Clear Skies // 2023
   - title: Animation
     works:
       - src: /src/assets/works/animations/animaljungle.gif
@@ -77,3 +80,4 @@ sections:
       - src: /src/assets/works/bb70cc_394db14f459140c6bdad4f1090e92e84~mv2.gif
         alt: Pose // 2024
         caption: Pose // 2024
+  - {}
