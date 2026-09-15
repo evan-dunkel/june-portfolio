@@ -12,12 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/vite": "4.3.3",
     "astro": "7.1.1",
-    "photoswipe": "^5.4.4",
-    "photoswipe-dynamic-caption-plugin": "^1.2.7",
-    "sharp": "^0.35.3",
-    "tailwindcss": "4.3.3"
-  },
-  "devDependencies": {}
+    "sharp": "^0.35.3"
+  }
 }

@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import MasonryGrid from "../components/MasonryGrid.astro";
+import Portfolio from "../components/Portfolio.astro";
 import { getCollection } from "astro:content";
 
 const settingsEntries = await getCollection("settings");
@@ -8,7 +8,6 @@ const portfolioEntries = await getCollection("portfolio");
 
 const settings = settingsEntries[0]?.data;
 const portfolio = portfolioEntries[0]?.data;
-const email = settings?.email ?? "";
 const about = settings?.about?.trim() ?? "";
 ---
 
@@ -17,28 +16,15 @@ const about = settings?.about?.trim() ?? "";
     email={settings?.email ?? ""}
     tagline={settings?.tagline ?? ""}
 >
-    <main class="mx-auto max-w-[1600px] px-gutter pt-4 pb-24">
+    <main>
         {
             portfolio?.sections && portfolio.sections.length > 0 ? (
-                <MasonryGrid sections={portfolio.sections} email={email} />
+                <Portfolio sections={portfolio.sections} />
             ) : (
-                <p class="text-muted">No work to show yet.</p>
+                <p>No work to show yet.</p>
             )
         }
     </main>
 
-    {
-        about && (
-            <footer class="mx-auto max-w-[1600px] px-gutter pb-24">
-                <p
-                    class="max-w-prose text-sm leading-relaxed text-muted"
-                    data-dk="about"
-                >
-                    {about}
-                </p>
-            </footer>
-        )
-    }
+    {about && <footer><p>{about}</p></footer>}
 </Layout>
-
-<script src="../scripts/lightbox.ts"></script>
