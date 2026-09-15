@@ -1,13 +1,13 @@
 # June Portfolio
 
-A single-page portfolio site for illustrator June Lee. Static, image-first, with a
-justified gallery and a PhotoSwipe lightbox.
+A single-page portfolio site for illustrator June Lee. The page uses browser
+default styles, section headings, images, captions, and an email link.
+Artwork links open the original files. Animated artwork appears as text links
+and opens on demand. The page has no client-side scripts or interface animations.
 
 ## Stack
 
 - [Astro](https://astro.build) 7 (static output)
-- [Tailwind CSS](https://tailwindcss.com) v4 (via `@tailwindcss/vite`)
-- [PhotoSwipe](https://photoswipe.com) for the lightbox
 - Content collections with Zod validation (`src/content.config.ts`)
 - Images optimized at build time with `sharp`
 
@@ -17,7 +17,10 @@ Uses [pnpm](https://pnpm.io).
 
 ```sh
 pnpm install
-pnpm dev      # local dev server
+pnpm dev --background # start the local dev server
+pnpm dev status       # check the background server
+pnpm dev logs         # read server logs
+pnpm dev stop         # stop the background server
 pnpm build    # static build to dist/
 pnpm preview  # preview the production build
 ```

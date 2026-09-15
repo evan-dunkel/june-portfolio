@@ -1,6 +1,4 @@
 ---
-import CopyButton from "./CopyButton.astro";
-
 interface Props {
     name: string;
     email: string;
@@ -10,35 +8,8 @@ interface Props {
 const { name, email, tagline } = Astro.props;
 ---
 
-<header
-    class="sticky top-0 z-50 border-b border-foreground/5 bg-background/80 backdrop-blur-md"
-    data-header
-    data-dk="header"
->
-    <div
-        class="mx-auto flex h-14 max-w-[1600px] items-center justify-between px-gutter"
-    >
-        <!-- Left: name + tagline -->
-        <div class="flex min-w-0 items-baseline gap-2">
-            <span
-                class="truncate text-base font-medium text-foreground"
-                data-dk="name">{name}</span
-            >
-            {
-                tagline && (
-                    <span
-                        class="hidden truncate text-sm text-muted sm:inline"
-                        data-dk="tagline"
-                    >
-                        {tagline}
-                    </span>
-                )
-            }
-        </div>
-
-        <!-- Right: email copy widget -->
-        <div class="flex shrink-0 items-center gap-1">
-            <CopyButton value={email} dk="email" />
-        </div>
-    </div>
+<header>
+    <h1>{name}</h1>
+    {tagline && <p>{tagline}</p>}
+    {email && <p><a href={`mailto:${email}`}>{email}</a></p>}
 </header>
